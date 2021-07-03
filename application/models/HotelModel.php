@@ -26,6 +26,29 @@ class HotelModel extends CI_Model{
   public function removePictures($ids){
     $this->db->where_in('id_picture', $ids)->delete('hotel_pictures');
   }
+
+  public function getRoomTypePictureId($id){
+    return $this->db->select('id')->from('hotel_rooms')->where('id_room', $id)
+      ->get()->row()->id;
+  }
+
+  public function addRoomType($id, $room, $picture){
+    $this->db->trans_start();
+    $this->db->insert('hotel_pictures', $picture);
+    $room['id_hotel'] = $id;
+    $room['id_picture'] = $this->db->insert_id();
+    $this->db->insert('hotel_rooms', $room);
+    $this->db->trans_commit();
+  }
+
+  public function editRoomType($id, $idHotel, $room){
+    $this->db->set($room)->where(['id_room' => $id, 'id_hotel' => $idHotel])
+      ->update('hotel_rooms');
+  }
+
+  public function removeRoomType($id, $idHotel){
+    $this->db->where(['id_room' => $id, 'id_hotel' => $idHotel])->delete('hotel_rooms');
+  }
 }
 
 ?>
