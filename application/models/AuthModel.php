@@ -25,6 +25,7 @@ class AuthModel extends CI_Model{
       ->get()->row()?->email;
     return !!$result;
   }
+  
   /**
    * Check if given password of a user is correct
    * @param    string   $id         User id to get saved user password in database
