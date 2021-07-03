@@ -1,0 +1,60 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins";
+}
+
+/* Login page */
+.form-control:focus {
+	text-decoration: none;
+	border-color: none !important;
+	box-shadow: none;
+}
+
+.form-control {
+	height: 50px;
+}
+
+.cust-btn {
+	background-color: #ff85a3;
+	color: whitesmoke;
+	border: none;
+	transition: 0.4s;
+}
+
+.cust-btn:hover {
+	background-color: #de3f67;
+	border: none;
+	text-decoration: none;
+}
+
+.reg-link {
+	text-decoration: none;
+	color: #ff85a3;
+	transition: 0.4s;
+}
+
+.reg-link:hover {
+	text-decoration: none;
+	color: #de3f67;
+}
+
+/* Sing Up page */
+.baby-txt {
+	color: #ff85a3;
+}
+
+.moon-txt {
+	color: #7bf1a8;
+}
+
+.plusMin {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+
+.drop-text {
+	display: none;
+}

@@ -10,8 +10,13 @@ class Hero extends CI_Controller
 	}
 	public function index()
 	{
-		$data['title'] = "slipAway - Your StayCation Solution !";
+		$data['title'] = "BabyMoon - Your StayCation Solution !";
 		$data['city'] = $this->hero->getCity();
+		$data['popularHotel'] = $this->hero->getPopularHotel();
 		$this->view->getDefault($data, 'hero');
+	}
+	public function listHotel()
+	{
+		$data['title'] = "BabyMoon - Hotels";
 	}
 }
