@@ -8,6 +8,9 @@ class Review extends CI_Controller{
   }
 
   public function experimentalSendReviewForm($id){
+    if($this->session->userdata('user') === NULL){
+      return http_response_code(401);
+    }
     $url = base_url('Review/addReview/1');
     echo "
       <form action=\"$url\" method=\"POST\">
@@ -20,6 +23,9 @@ class Review extends CI_Controller{
   }
 
   public function addReview($idHotel){
+    if($this->session->userdata('user') === NULL){
+      return http_response_code(401);
+    }
     // Validate input
     $config = [
       [
