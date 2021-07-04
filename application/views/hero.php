@@ -105,27 +105,22 @@
 								<div class="wrapper">
 									<div class="card radius shadowDepth1">
 										<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $p['picture'] ?>');">
-											<span class="m-2 badge badge-danger">
 												<?php
 													switch ($p['resiko']) {
-														case 0:
-															echo 'No Case';
-															break;
-														case 1:
-															echo 'No Risk';
-															break;
-														case 2:
-															echo 'Low Risk';
-															break;
-														case 3:
-															echo 'Medium Risk';
-															break;
-														default:
-															echo 'High RIsk';
-															break;
-													}
+												case "TIDAK ADA KASUS":
+													echo '<span class="m-2 badge badge-success">No Case</span>';
+													break;
+												case "RESIKO RENDAH":
+													echo '<span class="m-2 badge badge-info">Low Risk</span>';
+													break;
+												case "RESIKO SEDANG":
+													echo '<span class="m-2 badge badge-warning">Medium Risk</span>';
+													break;
+												default:
+													echo '<span class="m-2 badge badge-danger">High Risk</span>';
+													break;
+											}
 												?>
-											</span>
 										</div>
 										<div class="card__content card__padding">
 											<div class="card__content card__padding">
