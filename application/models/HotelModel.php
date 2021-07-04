@@ -49,6 +49,10 @@ class HotelModel extends CI_Model{
   public function removeRoomType($id, $idHotel){
     $this->db->where(['id_room' => $id, 'id_hotel' => $idHotel])->delete('hotel_rooms');
   }
+
+  public function bookRoom($data){
+    $this->db->insert('booking', $data);
+  }
 }
 
 ?>

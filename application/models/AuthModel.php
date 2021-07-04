@@ -10,7 +10,10 @@ class AuthModel extends CI_Model
 	 */
 	public function registerUser($data)
 	{
-		$this->db->insert('user', $data);
+		$this->db->trans_start();
+		$this->db->insert('user', $data['essentialData']);
+		$this->db->insert('user_basic', $data['additionalData']);
+		$this->db->trans_complete();
 	}
 
 	/**

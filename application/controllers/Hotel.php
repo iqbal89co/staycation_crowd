@@ -219,7 +219,8 @@ class Hotel extends CI_Controller{
         'name' => $this->input->post('name'),
         'beds' => $this->input->post('beds'),
         'capacity' => $this->input->post('capacity'),
-        'size' => $this->input->post('size')
+        'size' => $this->input->post('size'),
+        'count' => $this->input->post('count')
       ];
 
       if($action == 'add'){
@@ -232,6 +233,50 @@ class Hotel extends CI_Controller{
     } else {
       return http_response_code(404);
     }
+  }
+
+  public function bookRoom($id){
+    $config = [
+      [
+        'field' => 'name',
+        'label' => 'Name',
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Please provide your name according to your id card'
+        ]
+      ],[
+        'field' => 'email',
+        'label' => 'Email',
+        'rules' => 'required|valid_email',
+        'errors' => [
+          'required' => 'Please provide your email',
+          'valid_email' => 'Invalid Emaail'
+        ]
+      ],[
+        'field' => 'phone_number',
+        'label' => 'Phone Number',
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Please provide your phone number'
+        ]
+      ]
+    ];
+    $this->form_validation->set_rules($config);
+    if($this->form_validation->run() === FALSE){
+      echo json_encode($this->form_validation->error_array());
+      return;
+    }
+    $data = [
+      'id_room' => $this->input->post('id_room'),
+      'name' => $this->input->post('name'),
+      'email' => $this->input->post('email'),
+      'phone_number' => $this->input->post('phone_number'),
+      'check_in' => $this->input->post('check_in'),
+      'check_out' => $this->input->post('check_out'),
+      'rooms' => $this->input->post('rooms'),
+      'guests' => $this->input->post('guests')
+    ];
+    $this->hotelModel->bookRoom($data);
   }
 }
 
