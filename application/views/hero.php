@@ -12,7 +12,7 @@
 			</h1>
 		</div>
 	</div>
-	<div class="col-sm-12 col-lg-6">
+	<div class="col-sm-12 col-lg-6 pr-0">
 		<div class="search-panel position-relative bg-white w-100">
 			<nav class="navbar navbar-expand-lg navbar-light text-dark px-4">
 				<ul class="navbar-nav mr-auto">
