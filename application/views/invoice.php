@@ -59,7 +59,7 @@
 				<!-- Payment Method -->
 				<div class="mt-4 pl-2 pb-4">
 					<b>Payment method</b> <br><br>
-					<form action="<?= base_url('Hero/paymentSuccess') ?>" method="POST">
+					<form action="<?= base_url('Hero/paymentSuccess') ?>" method="POST" id="payment-form">
 						<div class="pb-3">
 							<!-- Credit Card -->
 							<div class="form-check form-check-inline mr-1">
@@ -244,9 +244,7 @@
 				$("#otherMethod").hide();
 			}
 		});
-	});
 
-	$(document).ready(function () {
 		$("#selectVirtual").change(function () {
 			if ($(this).val() == "virBCA") {
 				$("#virtualBCA").show();
@@ -266,9 +264,7 @@
 				$("#virtualBNI").hide();
 			}
 		});
-	});
 
-	$(document).ready(function () {
 		$("#selectOther").change(function () {
 			if ($(this).val() == "gopay") {
 				$("#Gopay").show();
@@ -281,6 +277,17 @@
 				$("#Gopay").hide();
 				$("#Ovo").hide();
 			}
+		});
+
+		$("#payment-form").submit(function(e){
+			e.preventDefault();
+			Swal.fire({
+				title: "Payment Successful",
+				icon: "success",
+				willClose: () => {
+					window.location.href = "<?= base_url() ?>";
+				}
+			});
 		});
 	});
 
