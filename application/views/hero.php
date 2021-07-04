@@ -27,6 +27,7 @@
 					<form class="m-3" method="POST" action="<?= base_url('hero/listHotel') ?>">
 						<div class="form-row">
 							<div class="form-group col-md-12">
+								<small>Choose a place with minimal risk of COVID-19</small> <br>
 								<label for="inputState">Destination</label>
 								<span>
 									<span class="badge badge-success">No Case</span>
