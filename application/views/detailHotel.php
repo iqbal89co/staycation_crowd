@@ -10,9 +10,6 @@
 				<li class="nav-item ">
 					<a class="nav-link" href="<?= base_url() ?>">Home <span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item active ml-3">
-					<a class="nav-link " href="<?= base_url('auth/loginPage') ?>">Login <span class="sr-only">(current)</span></a>
-				</li>
 			</ul>
 		</div>
 	</nav>
@@ -49,14 +46,27 @@
 						<div class="col-lg-6">
 							<div class="pd-title">
 								<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-								<div class="pt-price">IDR <?= $detail['price'] ?><span>/night</span></div>
+								<div class="pt-price"><span><b>start from</b></span> IDR <?= $detail['price'] ?><span>/night</span></div>
 								<h3><?= $detail['name'] ?></h3>
 								<p><span class="icon_pin_alt"></span> <?= $detail['address'] ?></p>
-
-								<fieldset>
 							</div>
 						</div>
 					</div>
+					<form action="">
+						<div class="form-row mb-3">
+							<div class="col-4">
+								<label for="checkin">Check In</label>
+								<input type="date" class="form-control" placeholder="">
+							</div>
+							<div class="col-4">
+								<label for="checkin">Check In</label>
+								<input type="date" class="form-control" placeholder="">
+							</div>
+							<div class="col-4 text-center">
+								<button class="btn btn-primary mt-4 align-center">Check Room</button>
+							</div>
+						</div>
+					</form>
 					<div class="pd-board">
 						<div class="tab-board">
 							<ul class="nav nav-tabs" role="tablist">
@@ -96,7 +106,9 @@
 													<span class="type-value"><?= $r['beds'] ?> beds</span>
 												</li>
 												<li>
-													<button type="button" class="btn btn-warning float-right">Choose this room</button>
+													<a class="btn btn-warning float-right" href="<?= base_url("/hero/booking/$r[id_room]") ?>?<?= $_SERVER['QUERY_STRING'] ?>">
+														Choose this room
+													</a>
 												</li>
 											</ul>
 										</div>
@@ -104,8 +116,7 @@
 								</div>
 								<div class="tab-pane" id="tabs-2" role="tabpanel">
 									<div class="tab-desc">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt dolor itaque facere consequatur, dignissimos minus adipisci ipsam repudiandae nisi illum provident, natus quidem vero? Quaerat ducimus sequi praesentium commodi, consectetur corporis eos sit perspiciatis, quae sed officia error, iure quasi.</p>
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt dolor itaque facere consequatur, dignissimos minus adipisci ipsam repudiandae nisi illum provident, natus quidem vero? Quaerat ducimus sequi praesentium commodi, consectetur corporis eos sit perspiciatis, quae sed officia error, iure quasi.</p>
+										<p><?= $detail['description'] ?></p>
 									</div>
 								</div>
 							</div>
@@ -114,87 +125,82 @@
 					<div class="pd-widget">
 						<h4>Location</h4>
 						<div class="map">
-							<iframe class="w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.9862545618907!2d106.94509731423047!3d-6.648624666843121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69b7bca97fa715%3A0x7763f029fab7bed5!2sForrester%20Glamping%20Co.!5e0!3m2!1sid!2sid!4v1625326827861!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+							<iframe class="w-100 h-100" src="<?= $detail['map_link'] ?>" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 						</div>
 						<div class="map-location">
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="ml-item">
 										<div class="ml-single-item">
-											<h6>Hospital <span>( <i class="fa fa-location-arrow"></i> 5 km )</span></h6>
+											<h6>Hospital <span>( <i class="fa fa-location-arrow"></i> <?= $detail['nearest_hospital_distance'] ?> km )</span></h6>
 											<p>RS.Adam malik</p>
 										</div>
 									</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="ml-item">
-										<div class="ml-single-item">
-											<h6>mother and child hospital<span>( <i class="fa fa-location-arrow"></i> 5 km )</span></h6>
+										<!-- <div class="ml-single-item">
+											<h6>mother and child hospital<span>( <i class="fa fa-location-arrow"></i> <?= $detail['nearest_rsia'] ?> km )</span></h6>
 											<p>RS.Stella Maris</p>
-										</div>
+											<p>(0411) 854341</p>
+										</div> -->
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="pd-widget">
-						<h4>02 reviews</h4>
+						<h4><?= $reviews['count'] ?> reviews</h4>
 						<div class="pd-review">
-							<div class="pr-item">
-								<div class="pr-avatar">
-									<!-- <div class="pr-pic">
-                                        <img src="" alt="">
-                                    </div> -->
-									<div class="pr-text">
-										<h6>Brandon Kelley</h6>
-										<span>15 Aug 2017</span>
-										<div class="pr-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
+							<?php for ($i = 0; $i < count($reviews['data']); $i++) : ?>
+								<div class="pr-item">
+									<div class="pr-avatar">
+										<div class="pr-text">
+											<h6><?= $reviews['data'][$i]->rater ?></h6>
+											<span><?= date('d M Y', strtotime($reviews['data'][$i]->time)) ?></span>
+											<div class="pr-rating">
+												<?php for ($j = 0; $j < 5; $j++) : ?>
+													<i class="fa fa-star <?= $j < $reviews['data'][$i]->rating ? 'rated' : '' ?>"></i>
+												<?php endfor; ?>
+											</div>
 										</div>
 									</div>
+									<p><?= $reviews['data'][$i]->review ?></p>
 								</div>
-								<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
-							</div>
-							<div class="pr-item">
-								<div class="pr-avatar">
-									<!-- <div class="pr-pic">
-                                        <img src="" alt="">
-                                    </div> -->
-									<div class="pr-text">
-										<h6>Matthew Nelson</h6>
-										<span>15 Aug 2017</span>
-										<div class="pr-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-								</div>
-								<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
-							</div>
+							<?php endfor; ?>
 						</div>
 					</div>
 					<div class="pd-widget">
 						<h4>Your Rating</h4>
-						<form action="#" class="review-form">
-							<div class="group-input">
-							</div>
-							<textarea placeholder="Messages"></textarea>
+						<form action="<?= base_url("/Review/addReview/$id") ?>" method="POST" class="review-form">
+							<label for='input-rater'>Rater</label>
+							<input type="text" id='input-rater' name="rater" class="form-control" placeholder="Provide your name" />
+							<br />
+							<textarea name="review" placeholder="Messages"></textarea>
 							<div class="rating">
 								<span>Your Rating:</span>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
+								<label for="rating-star-1">
+									<i class="fa fa-star"></i>
+								</label>
+								<input class="d-none" id="rating-star-1" type="radio" name="rating" value='1' />
+								<label for="rating-star-2">
+									<i class="fa fa-star"></i>
+								</label>
+								<input class="d-none" id="rating-star-2" type="radio" name="rating" value='2' />
+								<label for="rating-star-3">
+									<i class="fa fa-star"></i>
+								</label>
+								<input class="d-none" id="rating-star-3" type="radio" name="rating" value='3' />
+								<label for="rating-star-4">
+									<i class="fa fa-star"></i>
+								</label>
+								<input class="d-none" id="rating-star-4" type="radio" name="rating" value='4' />
+								<label for="rating-star-5">
+									<i class="fa fa-star"></i>
+								</label>
+								<input class="d-none" id="rating-star-5" type="radio" name="rating" value='5' />
 							</div>
-							<button type="submit" class="btn btn-primary">send messages</button>
+							<button type="submit" class="btn btn-primary">Send messages</button>
 						</form>
 					</div>
 				</div>
@@ -202,4 +208,15 @@
 		</div>
 	</div>
 </section>
+<script>
+	$(".review-form").on("change", `input[name="rating"]`, (e) => {
+		for (let i = 0; i < 5; i++) {
+			if (i < e.currentTarget.value) {
+				$(".review-form").find(`label[for="rating-star-${i + 1}"]`).addClass('rated');
+			} else {
+				$(".review-form").find(`label[for="rating-star-${i + 1}"]`).removeClass('rated');
+			}
+		}
+	});
+</script>
 <!-- Property Details Section End -->

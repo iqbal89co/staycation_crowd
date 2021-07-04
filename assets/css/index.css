@@ -664,6 +664,11 @@ a:hover {
 }
 .pd-text .pd-widget .pd-review .pr-item .pr-avatar .pr-text .pr-rating i {
 	font-size: 10px;
+	color: #636363;
+	margin-right: -4px;
+}
+.pd-text .pd-widget .pd-review .pr-item .pr-avatar .pr-text .pr-rating i.rated {
+	font-size: 10px;
 	color: #f7a441;
 	margin-right: -4px;
 }
@@ -746,10 +751,17 @@ a:hover {
 .review-form .rating i,
 .leave-comment-form .rating i,
 .cc-form .rating i {
+	cursor: pointer;
 	font-size: 12px;
-	color: #f7a441;
-	margin-right: -4px;
+	color:#636363;
 }
+.review-form .rating label.rated i,
+.leave-comment-form .rating label.rated i,
+.cc-form .rating label.rated i {
+	font-size: 12px;
+	color:#f7a441;
+}
+
 /* search */
 .banner-simple {
 	background-color: #0166d0;
@@ -777,17 +789,30 @@ a:hover {
 }
 
 .sedangCity {
-	background-color: orange;
+	background-color:  var(--warning);
+	color: white;
 }
 
 .noCity {
-	background-color: greenyellow;
+	background-color:  var(--success);
+	color: white;
 }
 
 .rendahCity {
-	background-color: yellow;
+	background-color:  var(--info);
+	color: white;
 }
 
 .tinggiCity {
-	background-color: red;
+	background-color:  var(--danger);
+	color: white;
+}
+
+.sedangCity:hover,.noCity:hover,.rendahCity:hover,.tinggiCity:hover{
+	background-color: var(--primary);
+	color: white;
+}
+
+.select2-container--bootstrap .select2-results__option{
+	padding: 0 !important;
 }

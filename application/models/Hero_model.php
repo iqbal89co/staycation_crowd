@@ -14,24 +14,27 @@ class Hero_model extends CI_Model
 		WHERE id_kota=$city";
 		return $this->db->query($query)->row_array();
 	}
-	public function getPopularHotel()
+	public function getSafestHotel()
 	{
-		$query = "SELECT hotel_pictures.name AS picture, hotel.name, hotel.stars, kota.nama_kota,
-		nearest_hospital_distance
+		$query = "SELECT hotel.id_hotel, hotel_pictures.name AS picture, hotel.name, hotel.stars, v_kota.nama_kota,
+		nearest_hospital_distance, resiko
 		FROM hotel
 		JOIN hotel_pictures ON hotel.main_picture=hotel_pictures.id_picture
-		JOIN kota ON kota.id_kota=hotel.city_id
+		JOIN v_kota ON v_kota.id_kota=hotel.city_id
+		ORDER BY v_kota.resiko ASC, nearest_rsia ASC, nearest_hospital_distance ASC
 		LIMIT 6";
 		return $this->db->query($query)->result_array();
 	}
 
-	public function searchHotel($city, $capacity)
+	public function searchHotel($city)
 	{
 		$query = "SELECT hotel_pictures.name AS picture, hotel.id_hotel, hotel.name, hotel.stars,
-		nearest_hospital_distance
+		nearest_hospital_distance, nearest_rsia, v_kota.nama_kota, v_kota.resiko
 		FROM hotel
 		JOIN hotel_pictures ON hotel.main_picture=hotel_pictures.id_picture
-		WHERE hotel.city_id=$city";
+		JOIN v_kota ON v_kota.id_kota=hotel.city_id
+		WHERE hotel.city_id=$city
+		ORDER BY v_kota.resiko ASC, nearest_rsia ASC, nearest_hospital_distance ASC";
 		return $this->db->query($query)->result_array();
 	}
 	public function getDetail($id)

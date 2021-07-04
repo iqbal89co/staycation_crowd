@@ -7,7 +7,9 @@ class Hero extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Hero_model', 'hero');
+		$this->load->model('ReviewModel', 'review');
 	}
+
 	public function index()
 	{
 		$data['title'] = "BabyMoon - Your StayCation Solution !";
@@ -15,9 +17,10 @@ class Hero extends CI_Controller
 		$get_url = file_get_contents($url);
 		$d = json_decode($get_url);
 		$data['city'] = $d->data;
-		$data['popularHotel'] = $this->hero->getPopularHotel();
+		$data['popularHotel'] = $this->hero->getSafestHotel();
 		$this->view->getDefault($data, 'hero');
 	}
+
 	public function listHotel()
 	{
 		$data['title'] = "BabyMoon - Hotels";
@@ -30,7 +33,7 @@ class Hero extends CI_Controller
 		$data['jlhDewasa'] = $this->input->post('jlhDewasa');
 		$data['jlhAnak'] = $this->input->post('jlhAnak');
 		$capacity = $this->input->post('jlhIbuHamil') + $this->input->post('jlhDewasa') + $this->input->post('jlhAnak');
-		$data['listHotel'] = $this->hero->searchHotel($this->input->post('city'), $capacity);
+		$data['listHotel'] = $this->hero->searchHotel($this->input->post('city'));
 		$data['date1'] = $this->input->post('checkIn');
 		$data['date2'] = $this->input->post('checkOut');
 		$date1 = strtotime($this->input->post('checkIn'));
@@ -38,6 +41,7 @@ class Hero extends CI_Controller
 		$days = ($date2 - $date1) / 86400;
 		$this->view->getDefault($data, 'listHotel');
 	}
+
 	public function detail($id)
 	{
 		if ($this->hero->checkHotel($id)) {
@@ -45,10 +49,30 @@ class Hero extends CI_Controller
 			$data['detail'] = $this->hero->getDetail($id);
 			$data['gambar'] = $this->hero->getPicture($id);
 			$data['rooms'] = $this->hero->getRooms($id);
-			var_dump($data['rooms']);
+			$data['reviews'] = $this->review->reviewList($id);
+			$data['id'] = $id;
 			$this->view->getDefault($data, 'detailHotel');
 		} else {
 			redirect('hero');
 		}
+	}
+	public function getCity()
+	{
+		$cityId = $this->input->post('city_id');
+		$url = "https://data.covid19.go.id/public/api/skor.json";
+		$get_url = file_get_contents($url);
+		$d = json_decode($get_url);
+		$data = $d->data;
+		foreach ($data as $d) {
+			if ($d->kode_kota == $cityId) {
+				echo json_encode($d->kota);
+			}
+		}
+		// echo json_encode($data[0]->kota);
+	}
+	
+	public function booking($id){
+		$this->load->view('payment');
+		//$this->view->getDefault(null, 'payment');
 	}
 }
