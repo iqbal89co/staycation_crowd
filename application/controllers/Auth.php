@@ -65,6 +65,20 @@ class Auth extends CI_Controller {
           'required' => 'Please confirm your password',
           'matches' => 'Password mis-match'
         ]
+      ],[
+        'field' => 'name',
+        'label' => 'Name',
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Please provide a name according to your id card',
+        ]
+      ],[
+        'field' => 'phone_number',
+        'label' => 'Phone Number',
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Please provide your phone number'
+        ]
       ]
     ];
     $this->form_validation->set_rules($validation);
@@ -75,10 +89,16 @@ class Auth extends CI_Controller {
     }
     // Store data in database
     $data = [
-      'username' => $this->input->post('username'),
-      'email' => $this->input->post('email'),
-      'password' => password_hash($this->input->post('password'), PASSWORD_ARGON2ID),
-      'level' => 2
+      'essentialData' => [
+        'username' => $this->input->post('username'),
+        'email' => $this->input->post('email'),
+        'password' => password_hash($this->input->post('password'), PASSWORD_ARGON2ID),
+        'level' => 2
+      ],
+      'additionalData' => [
+        'name' => $this->input->post('name'),
+        'phone_number' => $this->input->post('phone_number')
+      ]
     ];
     $this->authModel->registerUser($data);
   }
