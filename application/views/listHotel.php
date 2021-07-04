@@ -10,9 +10,6 @@
 				<li class="nav-item ">
 					<a class="nav-link" href="<?= base_url() ?>">Home <span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item active ml-3">
-					<a class="nav-link " href="<?= base_url('auth/loginPage') ?>">Login <span class="sr-only">(current)</span></a>
-				</li>
 			</ul>
 		</div>
 	</nav>
