@@ -97,8 +97,8 @@
 
 			<div class="explore ml-5 my-3">
 				<h2>Safest Vacation</h2>
-				<div class=" list__wisata">
-					<div class="row">
+				<div class="">
+					<div class="row list__wisata">
 					<?php foreach ($popularHotel as $p) : ?>
 						<div class="col-4 pr-0">
 							<a href="<?= base_url('hero/detail/') . $p['id_hotel'] ?>" style="height: 200px;width: 170px;">
