@@ -11,8 +11,8 @@
 			<div class="row">
 				<!-- Place photo -->
 				<div class="col-lg-4 col-md-6 col-sm-12">
-					<img src="<?= base_url("assets/img/hotel/$details->picture") ?>"
-						alt="hotel image" width="150" class="rounded">
+					<img src="<?= base_url("assets/img/hotel/$details->picture") ?>" alt="hotel image" width="150"
+						class="rounded">
 				</div>
 				<!-- Place name -->
 				<div class="col-lg-8 col-md-6 col-sm-12 align-self-center">
@@ -47,7 +47,7 @@
 			<div class="mt-4 pl-2 pt-4 pb-4" id="card-room">
 				<b>Room</b>
 				<p><?= $details->room_name ?>
-				<span class="float-right font-weight-bold">IDR <?= $details->price ?>/night</span></p>
+					<span class="float-right font-weight-bold">IDR <?= $details->price ?>/night</span></p>
 			</div>
 		</div>
 		<div class="card-body col-lg-5 mx-auto mb-5 ml-2" id="cust-card-b2">
@@ -59,7 +59,8 @@
 				<!-- Payment Method -->
 				<div class="mt-4 pl-2 pb-4">
 					<b>Payment method</b> <br><br>
-					<form action="<?= base_url('Hero/paymentSuccess') ?>" method="POST">
+					<form action="<?= base_url('Hero/paymentSuccess') ?>" method="POST" class="needs-validation"
+						novalidate>
 						<div class="pb-3">
 							<!-- Credit Card -->
 							<div class="form-check form-check-inline mr-1">
@@ -104,13 +105,14 @@
 							<div class="form-group form-row">
 								<div class="col-sm-6">
 									<div class="">
-										<input type="text" class="form-control" name="expired_date"
+										<input type="date" class="form-control" name="expired_date"
 											placeholder="Expiration date">
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="">
-										<input type="text" class="form-control" name="cv_code" placeholder="CVV/CVC">
+										<input type="text" class="form-control" name="cv_code" placeholder="CVV/CVC"
+											max="3">
 										<small>3 last digit number that's printed at the back of your card</small>
 									</div>
 								</div>
@@ -135,13 +137,14 @@
 							<div class="form-group form-row">
 								<div class="col-sm-6">
 									<div class="">
-										<input type="text" class="form-control" name="expired_date"
+										<input type="date" class="form-control" name="expired_date"
 											placeholder="Expiration date">
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="">
-										<input type="text" class="form-control" name="cv_code" placeholder="CVV/CVC">
+										<input type="text" class="form-control" name="cv_code" placeholder="CVV/CVC"
+											max="3">
 										<small>3 last digit number that's printed at the back of your card</small>
 									</div>
 								</div>
@@ -283,5 +286,22 @@
 			}
 		});
 	});
+
+	// Validation
+	(function () {
+		'use strict';
+		window.addEventListener('load', function () {
+			var forms = document.getElementsByClassName('needs-validation');
+			var validation = Array.prototype.filter.call(forms, function (form) {
+				form.addEventListener('submit', function (event) {
+					if (form.checkValidity() === false) {
+						event.preventDefault();
+						event.stopPropagation();
+					}
+					form.classList.add('was-validated');
+				}, false);
+			});
+		}, false);
+	})();
 
 </script>
