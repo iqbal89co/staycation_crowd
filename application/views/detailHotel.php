@@ -52,6 +52,21 @@
 							</div>
 						</div>
 					</div>
+					<form action="">
+						<div class="form-row mb-3">
+							<div class="col-4">
+								<label for="checkin">Check In</label>
+								<input type="date" class="form-control" placeholder="">
+							</div>
+							<div class="col-4">
+								<label for="checkin">Check In</label>
+								<input type="date" class="form-control" placeholder="">
+							</div>
+							<div class="col-4 text-center">
+								<button class="btn btn-primary mt-4 align-center">Check Room</button>
+							</div>
+						</div>
+					</form>
 					<div class="pd-board">
 						<div class="tab-board">
 							<ul class="nav nav-tabs" role="tablist">
