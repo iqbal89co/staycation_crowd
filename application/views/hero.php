@@ -100,13 +100,12 @@
 
 			<div class="explore ml-5 my-3">
 				<h2>Safest Vacation</h2>
-				<div class=" list__wisata">
+				<div class="list__wisata">
 					<?php foreach ($popularHotel as $p) : ?>
-						<div class="col-4 pr-0">
-							<div class="wrapper">
+						<div class="col-4 pl-0">
+							<a href="<?= base_url('hero/detail/') . $p['id_hotel'] ?>" class="wrapper">
 								<div class="card radius shadowDepth1">
 									<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $p['picture'] ?>');">
-									<a href="#" class="m-2 badge badge-danger">High Risk</a>
 									</div>
 									<div class="card__content card__padding">
 										<div class="name">
@@ -118,56 +117,57 @@
 											<?php } ?>
 										</div>
 										<div class="location">
-											<span><i class="fas fa-map-marker-alt"></i> <?= $p['nama_kota'] ?></span>
+											<span class="convertCity" data-id="<?= $p['city_id'] ?>"><i class="fas fa-map-marker-alt"></i></span>
 										</div>
 										<div class="info">
-											<i><?= $p['nearest_hospital_distance'] ?> km from hospital</i>
+											<i><?= $p['nearest_hospital_distance'] ?> km to hospital</i>
 										</div>
 									</div>
 								</div>
-							</div>
+							</a>
 						</div>
 					<?php endforeach; ?>
+				</div>
 
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container benefit py-5">
+	<h1 class="">Safe and Unique Vacation</h1>
+	<div class="row my-5">
+		<div class="col-lg-3 col-sm-6">
+			<div class="card text-center py-5 justify-content-center">
+				<div class="card-body p-2">
+					<img class="float-center mb-4" src="assets/img/corona-safe.png" alt="" width="100">
+					<h6>guarantee health protocol</h6>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-sm-6">
+			<div class="card text-center py-5 justify-content-center">
+				<div class="card-body p-2">
+					<img class="float-center mb-4" src="assets/img/safe.png" alt="" width="100">
+					<h6>Provide the safest location for you</h6>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-sm-6">
+			<div class="card text-center py-5 justify-content-center">
+				<div class="card-body p-2">
+					<img class="float-center mb-4" src="assets/img/health.png" alt="" width="100">
+					<h6>Provide information on the nearest health service during an emergency</h6>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-sm-6">
+			<div class="card text-center py-5 justify-content-center">
+				<div class="card-body p-2">
+					<img class="float-center mb-4" src="assets/img/vacation.png" alt="" width="100">
+					<h6>staycation with a variety of unique experiences</h6>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="container benefit py-5">
-            <h1 class="">Safe and Unique Vacation</h1>
-            <div class="row my-5">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card text-center py-5 justify-content-center">
-                        <div class="card-body p-2">
-                            <img class="float-center mb-4" src="assets/img/corona-safe.png" alt="" width="100">
-                            <h6>guarantee health protocol</h6>
-                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card text-center py-5 justify-content-center">
-                        <div class="card-body p-2">
-                            <img class="float-center mb-4" src="assets/img/safe.png" alt="" width="100">
-                            <h6>Provide the safest location for you</h6>
-                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card text-center py-5 justify-content-center">
-                        <div class="card-body p-2">
-                            <img class="float-center mb-4" src="assets/img/health.png" alt="" width="100">
-                            <h6>Provide information on the nearest health service during an emergency</h6>
-                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card text-center py-5 justify-content-center">
-                        <div class="card-body p-2">
-                            <img class="float-center mb-4" src="assets/img/vacation.png" alt="" width="100">
-                            <h6>staycation with a variety of unique experiences</h6>
-                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+</div>

@@ -49,7 +49,7 @@
 						<div class="col-lg-6">
 							<div class="pd-title">
 								<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-								<div class="pt-price">IDR <?= $detail['price'] ?><span>/night</span></div>
+								<div class="pt-price"><span><b>start from</b></span> IDR <?= $detail['price'] ?><span>/night</span></div>
 								<h3><?= $detail['name'] ?></h3>
 								<p><span class="icon_pin_alt"></span> <?= $detail['address'] ?></p>
 							</div>

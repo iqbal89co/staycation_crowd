@@ -45,6 +45,21 @@
 <script>
 	$(document).ready(function() {
 		$('.carousel').carousel();
+		$('.convertCity').each(function() {
+			let t = $(this);
+			let field = $(this).data('id');
+			$.ajax({
+				type: "POST",
+				url: "<?= base_url('hero/getCity') ?>",
+				dataType: "json",
+				data: {
+					city_id: field
+				},
+				success: function(result) {
+					$(t).text(result);
+				}
+			})
+		})
 		$(document).on('click', '.btnMin', function() {
 			let minNumber = Number($(this).next().text());
 			if (minNumber > 0) {

@@ -14,18 +14,21 @@ class Hero_model extends CI_Model
 		WHERE id_kota=$city";
 		return $this->db->query($query)->row_array();
 	}
-	public function getPopularHotel()
+	public function getSafestHotel()
 	{
-		$query = "SELECT hotel_pictures.name AS picture, hotel.name, hotel.stars, kota.nama_kota,
+		$url = "https://data.covid19.go.id/public/api/skor.json";
+		$get_url = file_get_contents($url);
+		$d = json_decode($get_url);
+		$data['city'] = $d->data;
+		$query = "SELECT hotel_pictures.name AS picture, hotel.id_hotel, hotel.name, hotel.stars, hotel.city_id,
 		nearest_hospital_distance
 		FROM hotel
 		JOIN hotel_pictures ON hotel.main_picture=hotel_pictures.id_picture
-		JOIN kota ON kota.id_kota=hotel.city_id
 		LIMIT 6";
 		return $this->db->query($query)->result_array();
 	}
 
-	public function searchHotel($city, $capacity)
+	public function searchHotel($city)
 	{
 		$query = "SELECT hotel_pictures.name AS picture, hotel.id_hotel, hotel.name, hotel.stars,
 		nearest_hospital_distance
