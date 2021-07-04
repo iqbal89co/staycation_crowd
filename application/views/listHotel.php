@@ -96,7 +96,7 @@
 	<div class="all mb-5">
 		<div class="row">
 			<?php foreach ($listHotel as $l) : ?>
-				<div class="col-4 pr-0">
+				<div class="col-sm-6 col-lg-3 pr-0">
 					<a href="<?= base_url('hero/detail/') . $l['id_hotel'] ?>" class="position-absolute" style="height: 200px;width: 170px;">
 						<div class="wrapper">
 							<div class="card radius shadowDepth1">
