@@ -19,7 +19,8 @@ class Auth extends CI_Controller {
     if($this->session->userdata('user') !== NULL){
       redirect(base_url());
     }
-    $this->load->view('auth/login');
+		$data['title'] = "BabyMoon - Login";
+    $this->view->getDefault($data, 'auth/login');
   }
 
   /*
@@ -123,5 +124,3 @@ class Auth extends CI_Controller {
     redirect(base_url());
   }
 }
-
-?>
