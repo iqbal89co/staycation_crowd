@@ -24,14 +24,16 @@
 				<div class="form-group col-md-3">
 					<label for="inputState">Destination</label>
 					<select id="inputState" name="city" class="form-control">
-						<?php foreach ($city as $c) :
-							if ($cityNow == $c->kode_kota) {
-						?>
-								<option value="<?= $c->kode_kota ?>" selected><?= $c->prov ?>, <?= $c->kota ?></option>
-							<?php } else { ?>
-								<option value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
-						<?php }
-						endforeach; ?>
+					<?php foreach ($city as $c) :
+						if ($c->hasil == "TIDAK ADA KASUS") { ?>
+							<option class="noCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+						<?php } else if ($c->hasil == "RESIKO RENDAH") { ?>
+							<option class="rendahCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+						<?php } else if ($c->hasil == "RESIKO SEDANG") { ?>
+							<option class="sedangCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+						<?php } else { ?>
+							<option class="tinggiCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+					<?php } endforeach; ?>
 					</select>
 				</div>
 				<div class="form-group col-md-3">
@@ -123,3 +125,16 @@
 		</div>
 	</div>
 </div>
+<script>
+	$("#inputState").select2({
+		theme: 'bootstrap',
+		templateResult: function(state){
+			if(!state.id){
+				return state.text
+			}
+			return $(
+				`<span class="h-100 w-100 d-block p-1 ${state.element.className}">` + state.text + "</span>"
+			)
+		}
+	});
+</script>
