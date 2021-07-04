@@ -57,20 +57,20 @@
 						<input type="number" value="<?= $jlhDewasa ?>" hidden readonly min="0" class="ctDewasa" name="jlhDewasa">
 						<input type="number" value="<?= $jlhAnak ?>" hidden readonly min="0" class="ctAnak" name="jlhAnak">
 						<ul class="list-group list-group-flush">
-								<li class="list-group-item">Adult
-									<div class="float-right" id="rowIbuHamil">
-										<button type="button" class="plusMin btnMin">-</button>
-										<span class="ctGuest">0</span>
-										<button type="button" class="plusMin btnPlus">+</button>
-									</div>
-								</li>
-								<li class="list-group-item">Child
-									<div class="float-right" id="rowDewasa">
-										<button type="button" class="plusMin btnMin">-</button>
-										<span class="ctGuest">0</span>
-										<button type="button" class="plusMin btnPlus">+</button>
-									</div>
-								</li>
+							<li class="list-group-item">Adult
+								<div class="float-right" id="rowIbuHamil">
+									<button type="button" class="plusMin btnMin">-</button>
+									<span class="ctGuest">0</span>
+									<button type="button" class="plusMin btnPlus">+</button>
+								</div>
+							</li>
+							<li class="list-group-item">Child
+								<div class="float-right" id="rowDewasa">
+									<button type="button" class="plusMin btnMin">-</button>
+									<span class="ctGuest">0</span>
+									<button type="button" class="plusMin btnPlus">+</button>
+								</div>
+							</li>
 							<li><button type="button" class="btn w-100 drop-done">done</button></li>
 						</ul>
 					</div>
@@ -89,48 +89,39 @@
 	<div class="all mb-5">
 		<div class="row">
 			<?php
-				$hamil = $_POST['jlhIbuHamil'] ?? 0;
-				$dewasa = $_POST['jlhDewasa'] ?? 0;
-				$anak = $_POST['jlhAnak'] ?? 0;
-				$checkIn = $_POST['checkIn'] ?? 0;
-				$checkOut = $_POST['checkOut'] ?? 0;
-				$queryString = "?hamil=$hamil&dewasa=$dewasa&anak=$anak&checkin=$checkIn&checkout=$checkOut";
+			$hamil = $_POST['jlhIbuHamil'] ?? 0;
+			$dewasa = $_POST['jlhDewasa'] ?? 0;
+			$anak = $_POST['jlhAnak'] ?? 0;
+			$checkIn = $_POST['checkIn'] ?? 0;
+			$checkOut = $_POST['checkOut'] ?? 0;
+			$queryString = "?hamil=$hamil&dewasa=$dewasa&anak=$anak&checkin=$checkIn&checkout=$checkOut";
 			?>
 			<?php foreach ($listHotel as $l) : ?>
 				<div class="col-sm-6 col-lg-3 pr-0">
-					<a href="<?= base_url('hero/detail/') . $l['id_hotel'] ?>" class="position-absolute" style="height: 200px;width: 170px;">
+					<a href="<?= base_url('hero/detail/') . $l['id_hotel'] ?>" style="height: 200px;width: 170px;">
 						<div class="wrapper">
 							<div class="card radius shadowDepth1">
 								<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $l['picture'] ?>');">
-								<?php
+
+									<?php
 									switch ($l['resiko']) {
-										case "TIDAK ADA KASUS":
+										case 1:
 											echo '<span class="m-2 badge badge-success">No Case</span>';
 											break;
-										case "RESIKO RENDAH":
-											echo '<span class="m-2 badge badge-info">Low Risk</span>';
+										case 2:
+											echo '<span class="m-2 badge badge-info">Low risk</span>';
 											break;
-										case "RESIKO SEDANG":
-											echo '<span class="m-2 badge badge-warning">Medium Risk</span>';
+										case 3:
+											echo '<span class="m-2 badge badge-warning">Medium risk</span>';
 											break;
 										default:
-											echo '<span class="m-2 badge badge-danger">High Risk</span>';
+											echo '<span class="m-2 badge badge-danger">High risk</span>';
 											break;
 									}
-								?>
+									?>
+
 								</div>
 								<div class="card__content card__padding">
-									<div class="name">
-										<h6><?= $l['name'] ?></h6>
-									</div>
-									<div class="rate">
-										<?php for ($i = 0; $i < $l['stars']; $i++) { ?>
-											<i class="fa fa-star"></i>
-										<?php } ?>
-									</div>
-									<div class="location">
-										<span><i class="fas fa-map-marker-alt"></i></span>
-									</div>
 									<div class="card__content card__padding">
 										<div class="name">
 											<h6><?= $l['name'] ?></h6>
@@ -140,13 +131,11 @@
 												<i class="fa fa-star"></i>
 											<?php } ?>
 										</div>
-										<div class="card__content card__padding">
-											<div class="location">
-												<span><i class="fas fa-map-marker-alt"></i> <?= $l['nama_kota'] ?></span>
-											</div>
-											<div class="info">
-												<i><?= $l['nearest_hospital_distance'] ?> km from hospital</i>
-											</div>
+										<div class="location">
+											<span><i class="fas fa-map-marker-alt"></i> <?= $l['nama_kota'] ?></span>
+										</div>
+										<div class="info">
+											<i><?= $l['nearest_hospital_distance'] ?> km from hospital</i>
 										</div>
 									</div>
 								</div>
