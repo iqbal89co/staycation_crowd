@@ -18,7 +18,7 @@
 	<div class="footer-center">
 
 		<div>
-			<i class="fa fa-map-marker"></i>
+			<i class="fas fa-map-marker"></i>
 			<p><span>21 Revolution Street</span> Rutland, VT</p>
 		</div>
 
@@ -28,7 +28,7 @@
 		</div>
 
 		<div>
-			<i class="fa fa-envelope"></i>
+			<i class="fas fa-envelope"></i>
 			<p><a href="mailto:support@company.com">support@company.com</a></p>
 		</div>
 
