@@ -24,11 +24,11 @@
 		<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 	</ol>
 	<div class="carousel-inner">
-		<?php foreach ($gambar as $g) : ?>
-			<div class="carousel-item active">
-				<div class="d-block w-100 carousel-image" style="background-image: url('<?= base_url('assets/img/') . $g['name'] ?>');" height="400" alt="slide"></div>
+		<?php for($i = 0; $i < count($gambar); $i++) : ?>
+			<div class="carousel-item <?= $i == 0 ? "active" : "" ?>">
+				<div class="d-block w-100 carousel-image" style="background-image: url('<?= base_url('assets/img/hotel/') . $gambar[$i]['name'] ?>');" height="400" alt="slide"></div>
 			</div>
-		<?php endforeach; ?>
+		<?php endfor; ?>
 	</div>
 	<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 		<span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -41,7 +41,7 @@ class Hero_model extends CI_Model
 		hotel.stars, hotel.price, hotel.address, hotel.nearest_hospital_distance,
 		kota.nama_kota
 		FROM hotel
-		JOIN kota ON kota.nama_kota=hotel.city_id
+		JOIN kota ON kota.id_kota=hotel.city_id
 		WHERE hotel.id_hotel=$id";
 		return $this->db->query($query)->row_array();
 	}
