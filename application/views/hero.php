@@ -91,7 +91,7 @@
 			</div>
 
 			<div class="explore ml-5 my-3">
-				<h2>Popular</h2>
+				<h2>Safest Vacation</h2>
 				<div class=" list__wisata">
 					<?php foreach ($popularHotel as $p) : ?>
 						<div class="col-4 pr-0">
