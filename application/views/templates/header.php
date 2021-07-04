@@ -12,7 +12,7 @@
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 	<!-- fontawesome -->
-	<script src="https://kit.fontawesome.com/fda15ff7d1.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/1b121976b3.js" crossorigin="anonymous"></script>
 	<!-- Animated on scroll -->
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<!-- tab icon -->
