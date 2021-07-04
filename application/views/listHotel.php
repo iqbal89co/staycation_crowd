@@ -28,11 +28,11 @@
 					<label for="inputState">Destination</label>
 					<select id="inputState" name="city" class="form-control">
 						<?php foreach ($city as $c) :
-							if ($cityNow['id_kota'] == $c['id_kota']) {
+							if ($cityNow == $c->kode_kota) {
 						?>
-								<option value="<?= $c['id_kota'] ?>" selected><?= $c['nama_kota'] ?></option>
+								<option value="<?= $c->kode_kota ?>" selected><?= $c->prov ?>, <?= $c->kota ?></option>
 							<?php } else { ?>
-								<option value="<?= $c['id_kota'] ?>"><?= $c['nama_kota'] ?></option>
+								<option value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
 						<?php }
 						endforeach; ?>
 					</select>
@@ -111,7 +111,7 @@
 									<?php } ?>
 								</div>
 								<div class="location">
-									<span><i class="fas fa-map-marker-alt"></i> <?= $l['nama_kota'] ?></span>
+									<span><i class="fas fa-map-marker-alt"></i></span>
 								</div>
 								<div class="info">
 									<i><?= $l['nearest_hospital_distance'] ?> km to hospital</i>

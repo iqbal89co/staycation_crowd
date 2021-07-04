@@ -24,11 +24,15 @@
 		<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 	</ol>
 	<div class="carousel-inner">
-		<?php foreach ($gambar as $g) : ?>
-			<div class="carousel-item active">
-				<div class="d-block w-100 carousel-image" style="background-image: url('<?= base_url('assets/img/') . $g['name'] ?>');" height="400" alt="slide"></div>
-			</div>
-		<?php endforeach; ?>
+		<div class="carousel-item active">
+			<div class="d-block w-100 carousel-image" style="background-image: url('https://res.cloudinary.com/wegowordpress/image/upload/f_auto,q_auto/v1569570190/shutterstock_1239418129_dojbvc.jpg');" height="400" alt="First slide"></div>
+		</div>
+		<div class="carousel-item">
+			<div class="d-block w-100 carousel-image" style="background-image: url('https://th.bing.com/th/id/OIP.wASc_etw3jA2iQhWrdbEgQHaEH?pid=divDet&w=575&h=320&rs=1');" height="400" alt="Second slide"></div>
+		</div>
+		<div class="carousel-item">
+			<div class="d-block w-100 carousel-image" style="background-image: url('https://th.bing.com/th/id/OIP.AaxBuZ8LFB8Mqc75AK8yKQHaE8?pid=ImgDet&w=3000&h=2000&rs=1');" height="400" alt="Third slide"></div>
+		</div>
 	</div>
 	<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -71,7 +75,7 @@
 										<ul class="left-table">
 											<li>
 												<span class="type-name">Price</span>
-												<span class="type-value">IDR <?= $detail['price'] ?>/night</span>
+												<span class="type-value">IDR 140.000/night</span>
 											</li>
 											<li>
 												<span class="type-name">Type</span>
