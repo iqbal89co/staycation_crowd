@@ -133,63 +133,57 @@
 						</div>
 					</div>
 					<div class="pd-widget">
-						<h4>02 reviews</h4>
+						<h4><?= $reviews['count'] ?> reviews</h4>
 						<div class="pd-review">
+							<?php for($i = 0; $i < count($reviews['data']); $i++): ?>
 							<div class="pr-item">
 								<div class="pr-avatar">
-									<!-- <div class="pr-pic">
-                                        <img src="" alt="">
-                                    </div> -->
 									<div class="pr-text">
-										<h6>Brandon Kelley</h6>
-										<span>15 Aug 2017</span>
+										<h6><?= $reviews['data'][$i]->rater ?></h6>
+										<span><?= date('d M Y', strtotime($reviews['data'][$i]->time)) ?></span>
 										<div class="pr-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
+										<?php for($j = 0; $j < 5 ; $j++): ?>
+											<i class="fa fa-star <?= $j < $reviews['data'][$i]->rating ? 'rated' : '' ?>"></i>
+										<?php endfor; ?>
 										</div>
 									</div>
 								</div>
-								<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
+								<p><?= $reviews['data'][$i]->review ?></p>
 							</div>
-							<div class="pr-item">
-								<div class="pr-avatar">
-									<!-- <div class="pr-pic">
-                                        <img src="" alt="">
-                                    </div> -->
-									<div class="pr-text">
-										<h6>Matthew Nelson</h6>
-										<span>15 Aug 2017</span>
-										<div class="pr-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-								</div>
-								<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
-							</div>
+							<?php endfor; ?>
 						</div>
 					</div>
 					<div class="pd-widget">
 						<h4>Your Rating</h4>
-						<form action="#" class="review-form">
-							<div class="group-input">
-							</div>
-							<textarea placeholder="Messages"></textarea>
+						<form action="<?= base_url("/Review/addReview/$id") ?>" method="POST" class="review-form">
+							<label for='input-rater'>Rater</label>
+							<input type="text" id='input-rater' name="rater" class="form-control" placeholder="Provide your name" />
+							<br />
+							<textarea name="review" placeholder="Messages"></textarea>
 							<div class="rating">
 								<span>Your Rating:</span>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
+								<label for="rating-star-1">
+									<i class="fa fa-star"></i>
+								</label>
+								<input class="d-none" id="rating-star-1" type="radio" name="rating" value='1' />
+								<label for="rating-star-2">
+									<i class="fa fa-star"></i>
+								</label>
+								<input class="d-none" id="rating-star-2" type="radio" name="rating" value='2' />
+								<label for="rating-star-3">
+									<i class="fa fa-star"></i>
+								</label>
+								<input class="d-none" id="rating-star-3" type="radio" name="rating" value='3' />
+								<label for="rating-star-4">
+									<i class="fa fa-star"></i>
+								</label>
+								<input class="d-none" id="rating-star-4" type="radio" name="rating" value='4' />
+								<label for="rating-star-5">
+									<i class="fa fa-star"></i>
+								</label>
+								<input class="d-none" id="rating-star-5" type="radio" name="rating" value='5' />
 							</div>
-							<button type="submit" class="btn btn-primary">send messages</button>
+							<button type="submit" class="btn btn-primary">Send messages</button>
 						</form>
 					</div>
 				</div>
@@ -197,4 +191,15 @@
 		</div>
 	</div>
 </section>
+<script>
+	$(".review-form").on("change", `input[name="rating"]`, (e) => {
+		for(let i = 0; i < 5; i++){
+			if(i < e.currentTarget.value){
+				$(".review-form").find(`label[for="rating-star-${i + 1}"]`).addClass('rated');
+			} else {
+				$(".review-form").find(`label[for="rating-star-${i + 1}"]`).removeClass('rated');
+			}
+		}
+	});
+</script>
 <!-- Property Details Section End -->

@@ -7,6 +7,7 @@ class Hero extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Hero_model', 'hero');
+		$this->load->model('ReviewModel', 'review');
 	}
 	public function index()
 	{
@@ -45,7 +46,8 @@ class Hero extends CI_Controller
 			$data['detail'] = $this->hero->getDetail($id);
 			$data['gambar'] = $this->hero->getPicture($id);
 			$data['rooms'] = $this->hero->getRooms($id);
-			var_dump($data['rooms']);
+			$data['reviews'] = $this->review->reviewList($id);
+			$data['id'] = $id;
 			$this->view->getDefault($data, 'detailHotel');
 		} else {
 			redirect('hero');
