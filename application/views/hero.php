@@ -13,14 +13,11 @@
 		</div>
 	</div>
 	<div class="col-sm-12 col-lg-6">
-		<div class="search-panel position-absolute bg-white w-100">
+		<div class="search-panel position-relative bg-white w-100">
 			<nav class="navbar navbar-expand-lg navbar-light text-dark px-4">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
 						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item ml-3">
-						<a class="nav-link" href="<?= base_url('auth/loginPage') ?>">Login <span class="sr-only">(current)</span></a>
 					</li>
 				</ul>
 			</nav>
@@ -55,7 +52,7 @@
 							</div>
 						</div>
 						<div class="mb-3">
-							<button type="button" class="btn btn-secondary w-100 drop-heading">
+							<button type="button" class="btn btn-light w-100 drop-heading">
 								Guest
 							</button>
 
@@ -85,7 +82,7 @@
 											<button type="button" class="plusMin btnPlus">+</button>
 										</div>
 									</li>
-									<li><button type="button" class="btn w-100 drop-done">done</button></li>
+									<li><button type="button" class="btn btn-primary w-100 drop-done">done</button></li>
 								</ul>
 							</div>
 						</div>
@@ -102,29 +99,62 @@
 				<h2>Safest Vacation</h2>
 				<div class="list__wisata">
 					<?php foreach ($popularHotel as $p) : ?>
-						<div class="col-4 pl-0">
-							<a href="<?= base_url('hero/detail/') . $p['id_hotel'] ?>" class="wrapper">
-								<div class="card radius shadowDepth1">
-									<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $p['picture'] ?>');">
+						<div class="col-4 pr-0">
+							<a href="<?= base_url('hero/detail/') . $p['id_hotel'] ?>" class="position-absolute" style="height: 200px;width: 170px;">
+								<div class="wrapper">
+									<div class="card radius shadowDepth1">
+										<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $p['picture'] ?>');">
+											<a href="#" class="m-2 badge badge-danger">
+												<?php
+												switch ($p['resiko']) {
+													case 0:
+														echo 'No Case';
+														break;
+													case 1:
+														echo 'No Risk';
+														break;
+													case 2:
+														echo 'Low Risk';
+														break;
+													case 3:
+														echo 'Medium Risk';
+														break;
+													default:
+														echo 'High RIsk';
+														break;
+												}
+												?>
+											</a>
+										</div>
+										<div class="card__content card__padding">
+											<div class="name">
+												<h6><?= $p['name'] ?></h6>
+											</div>
+											<div class="rate">
+												<?php for ($i = 0; $i < $p['stars']; $i++) { ?>
+													<i class="fa fa-star"></i>
+												<?php } ?>
+											</div>
+											<div class="card__content card__padding">
+												<div class="name">
+													<h6><?= $p['name'] ?></h6>
+												</div>
+												<div class="rate">
+													<?php for ($i = 0; $i < $p['stars']; $i++) { ?>
+														<i class="fa fa-star"></i>
+													<?php } ?>
+												</div>
+												<div class="location">
+													<span><i class="fas fa-map-marker-alt"></i> <?= $p['nama_kota'] ?></span>
+												</div>
+												<div class="info">
+													<i><?= $p['nearest_hospital_distance'] ?> km from hospital</i>
+												</div>
+											</div>
+										</div>
 									</div>
-									<div class="card__content card__padding">
-										<div class="name">
-											<h6><?= $p['name'] ?></h6>
-										</div>
-										<div class="rate">
-											<?php for ($i = 0; $i < $p['stars']; $i++) { ?>
-												<i class="fa fa-star"></i>
-											<?php } ?>
-										</div>
-										<div class="location">
-											<span class="convertCity" data-id="<?= $p['city_id'] ?>"><i class="fas fa-map-marker-alt"></i></span>
-										</div>
-										<div class="info">
-											<i><?= $p['nearest_hospital_distance'] ?> km to hospital</i>
-										</div>
-									</div>
-								</div>
 							</a>
+							<<<<<<< HEAD=======>>>>>>> 1a4423649292bf5e05e6021f369a47ed105bccc2
 						</div>
 					<?php endforeach; ?>
 				</div>
@@ -134,7 +164,7 @@
 	</div>
 </div>
 
-<div class="container benefit py-5">
+<<<<<<< HEAD <div class="container benefit py-5">
 	<h1 class="">Safe and Unique Vacation</h1>
 	<div class="row my-5">
 		<div class="col-lg-3 col-sm-6">
@@ -170,4 +200,56 @@
 			</div>
 		</div>
 	</div>
-</div>
+	</div>
+	=======
+	<div class="container benefit py-5">
+		<h1 class="">Safe and Unique Vacation</h1>
+		<div class="row my-5">
+			<div class="col-lg-3 col-sm-6">
+				<div class="card text-center py-5 justify-content-center">
+					<div class="card-body p-2">
+						<img class="float-center mb-4" src="assets/img/corona-safe.png" alt="" width="100">
+						<h6>guarantee health protocol</h6>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="card text-center py-5 justify-content-center">
+					<div class="card-body p-2">
+						<img class="float-center mb-4" src="assets/img/safe.png" alt="" width="100">
+						<h6>Provide the safest location for you</h6>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="card text-center py-5 justify-content-center">
+					<div class="card-body p-2">
+						<img class="float-center mb-4" src="assets/img/health.png" alt="" width="100">
+						<h6>Provide information on the nearest health service during an emergency</h6>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="card text-center py-5 justify-content-center">
+					<div class="card-body p-2">
+						<img class="float-center mb-4" src="assets/img/vacation.png" alt="" width="100">
+						<h6>staycation with a variety of unique experiences</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$("#inputState").select2({
+			theme: 'bootstrap',
+			templateResult: function(state) {
+				if (!state.id) {
+					return state.text
+				}
+				return $(
+					`<span class="h-100 w-100 d-block p-1 ${state.element.className}">` + state.text + "</span>"
+				)
+			}
+		});
+	</script>
+	>>>>>>> 1a4423649292bf5e05e6021f369a47ed105bccc2

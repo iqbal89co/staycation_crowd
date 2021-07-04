@@ -16,14 +16,12 @@ class Hero_model extends CI_Model
 	}
 	public function getSafestHotel()
 	{
-		$url = "https://data.covid19.go.id/public/api/skor.json";
-		$get_url = file_get_contents($url);
-		$d = json_decode($get_url);
-		$data['city'] = $d->data;
-		$query = "SELECT hotel_pictures.name AS picture, hotel.id_hotel, hotel.name, hotel.stars, hotel.city_id,
-		nearest_hospital_distance
+		$query = "SELECT hotel_pictures.name AS picture, hotel.name, hotel.stars, v_kota.nama_kota,
+		nearest_hospital_distance, resiko
 		FROM hotel
 		JOIN hotel_pictures ON hotel.main_picture=hotel_pictures.id_picture
+		JOIN v_kota ON v_kota.id_kota=hotel.city_id
+		ORDER BY v_kota.resiko ASC, nearest_rsia ASC, nearest_hospital_distance ASC
 		LIMIT 6";
 		return $this->db->query($query)->result_array();
 	}
@@ -34,7 +32,9 @@ class Hero_model extends CI_Model
 		nearest_hospital_distance
 		FROM hotel
 		JOIN hotel_pictures ON hotel.main_picture=hotel_pictures.id_picture
-		WHERE hotel.city_id=$city";
+		JOIN v_kota ON v_kota.id_kota=hotel.city_id
+		WHERE hotel.city_id=$city
+		ORDER BY v_kota.resiko ASC, nearest_rsia ASC, nearest_hospital_distance ASC";
 		return $this->db->query($query)->result_array();
 	}
 	public function getDetail($id)

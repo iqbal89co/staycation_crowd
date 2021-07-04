@@ -10,13 +10,9 @@ class ReviewModel extends CI_Model{
    * @param    string   $review      Review text
    * @return   void 
   */
-  public function addReview($idUser, $idHotel, $rating, $review){
-    $this->db->insert('review', [
-      "id_user" => $idUser,
-      "id_hotel" => $idHotel,
-      "rating" => $rating,
-      "review" => $review
-    ]);
+  public function addReview($idHotel, $data){
+    $data['id_hotel'] = $idHotel;
+    $this->db->insert('review', $data);
   }
 
   /**
@@ -25,10 +21,11 @@ class ReviewModel extends CI_Model{
    * @return   array                 Array of reviews
   */
   public function reviewList($idHotel){
-    return $this->db->select('rating, review, username')->from('review')
-      ->join('user', 'review.id_user = user.id_user')
-      ->where('review.id_hotel', $idHotel)->get()->result();
+    return [
+      'data' => $this->db->select('rating, review, rater, time')->from('review')
+        ->where('review.id_hotel', $idHotel)->get()->result(),
+      'count' => $this->db->select('COUNT(id_hotel) total')->from('review')
+        ->where('review.id_hotel', $idHotel)->get()->row()->total
+    ];
   }
 }
-
-?>
