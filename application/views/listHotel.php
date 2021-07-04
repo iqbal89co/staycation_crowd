@@ -25,13 +25,13 @@
 				<select id="inputState" name="city" class="form-control">
 					<?php foreach ($city as $c) :
 						if ($c->hasil == "TIDAK ADA KASUS" || $c->hasil == "TIDAK TERDAMPAK") { ?>
-							<option class="noCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+							<option class="noCity" <?= $c->kode_kota == $cityNow ? 'selected' : '' ?> value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
 						<?php } else if ($c->hasil == "RESIKO RENDAH") { ?>
-							<option class="rendahCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+							<option class="rendahCity" <?= $c->kode_kota == $cityNow ? 'selected' : '' ?> value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
 						<?php } else if ($c->hasil == "RESIKO SEDANG") { ?>
-							<option class="sedangCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+							<option class="sedangCity" <?= $c->kode_kota == $cityNow ? 'selected' : '' ?> value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
 						<?php } else { ?>
-							<option class="tinggiCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+							<option class="tinggiCity" <?= $c->kode_kota == $cityNow ? 'selected' : '' ?> value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
 					<?php }
 					endforeach; ?>
 				</select>

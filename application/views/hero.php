@@ -12,7 +12,7 @@
 			</h1>
 		</div>
 	</div>
-	<div class="col-sm-12 col-lg-6">
+	<div class="col-sm-12 col-lg-6 pr-0">
 		<div class="search-panel position-relative bg-white w-100">
 			<nav class="navbar navbar-expand-lg navbar-light text-dark px-4">
 				<ul class="navbar-nav mr-auto">
@@ -27,6 +27,7 @@
 					<form class="m-3" method="POST" action="<?= base_url('hero/listHotel') ?>">
 						<div class="form-row">
 							<div class="form-group col-md-12">
+								<small>Choose a place with minimal risk of COVID-19</small> <br>
 								<label for="inputState">Destination</label>
 								<span>
 									<span class="badge badge-success">No Case</span>

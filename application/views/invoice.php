@@ -247,9 +247,7 @@
 				$("#otherMethod").hide();
 			}
 		});
-	});
 
-	$(document).ready(function () {
 		$("#selectVirtual").change(function () {
 			if ($(this).val() == "virBCA") {
 				$("#virtualBCA").show();
@@ -269,9 +267,7 @@
 				$("#virtualBNI").hide();
 			}
 		});
-	});
 
-	$(document).ready(function () {
 		$("#selectOther").change(function () {
 			if ($(this).val() == "gopay") {
 				$("#Gopay").show();
@@ -284,6 +280,17 @@
 				$("#Gopay").hide();
 				$("#Ovo").hide();
 			}
+		});
+
+		$("#payment-form").submit(function (e) {
+			e.preventDefault();
+			Swal.fire({
+				title: "Payment Successful",
+				icon: "success",
+				willClose: () => {
+					window.location.href = "<?= base_url() ?>";
+				}
+			});
 		});
 	});
 
