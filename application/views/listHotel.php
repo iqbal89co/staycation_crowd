@@ -25,55 +25,17 @@
 					<label for="inputState">Destination</label>
 					<select id="inputState" name="city" class="form-control">
 						<?php foreach ($city as $c) :
-							if ($c->resiko == "TIDAK ADA KASUS") { ?>
+							if ($c->hasil == "TIDAK ADA KASUS") { ?>
 								<option class="noCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
-							<?php } else if ($c->resiko == "RESIKO RENDAH") { ?>
+							<?php } else if ($c->hasil == "RESIKO RENDAH") { ?>
 								<option class="rendahCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
-							<?php } else if ($c->resiko == "RESIKO SEDANG") { ?>
+							<?php } else if ($c->hasil == "RESIKO SEDANG") { ?>
 								<option class="sedangCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
 							<?php } else { ?>
 								<option class="tinggiCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
 						<?php }
 						endforeach; ?>
 					</select>
-				</div>
-				<div class="form-group col-md-3">
-					<label for="checkIn">Check-In</label>
-					<input type="date" name="checkIn" class="form-control" id="checkIn" value="<?= $date1 ?>" placeholder="">
-				</div>
-				<div class="form-group col-md-3">
-					<label for="checkOut">Check-Out</label>
-					<input type="date" name="checkOut" class="form-control" id="checkOut" value="<?= $date2 ?>" placeholder="">
-				</div>
-
-				<div class="mb-3 col-md-3">
-					<label for="guest">&nbsp;</label>
-					<button type="button" class="btn btn-secondary w-100 drop-heading">
-						Guest
-					</button>
-
-					<div class="drop-text w-100">
-						<input type="number" value="<?= $jlhIbuHamil ?>" hidden readonly min="0" class="ctIbuHamil" name="jlhIbuHamil">
-						<input type="number" value="<?= $jlhDewasa ?>" hidden readonly min="0" class="ctDewasa" name="jlhDewasa">
-						<input type="number" value="<?= $jlhAnak ?>" hidden readonly min="0" class="ctAnak" name="jlhAnak">
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item">Adult
-								<div class="float-right" id="rowIbuHamil">
-									<button type="button" class="plusMin btnMin">-</button>
-									<span class="ctGuest">0</span>
-									<button type="button" class="plusMin btnPlus">+</button>
-								</div>
-							</li>
-							<li class="list-group-item">Child
-								<div class="float-right" id="rowDewasa">
-									<button type="button" class="plusMin btnMin">-</button>
-									<span class="ctGuest">0</span>
-									<button type="button" class="plusMin btnPlus">+</button>
-								</div>
-							</li>
-							<li><button type="button" class="btn w-100 drop-done">done</button></li>
-						</ul>
-					</div>
 				</div>
 			</div>
 			<div class="form-row">
