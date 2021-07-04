@@ -106,7 +106,9 @@
 													<span class="type-value"><?= $r['beds'] ?> beds</span>
 												</li>
 												<li>
-													<button type="button" class="btn btn-warning float-right">Choose this room</button>
+													<a class="btn btn-warning float-right" href="<?= base_url("/hero/booking/$r[id_room]") ?>?<?= $_SERVER['QUERY_STRING'] ?>">
+														Choose this room
+													</a>
 												</li>
 											</ul>
 										</div>
@@ -114,8 +116,7 @@
 								</div>
 								<div class="tab-pane" id="tabs-2" role="tabpanel">
 									<div class="tab-desc">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt dolor itaque facere consequatur, dignissimos minus adipisci ipsam repudiandae nisi illum provident, natus quidem vero? Quaerat ducimus sequi praesentium commodi, consectetur corporis eos sit perspiciatis, quae sed officia error, iure quasi.</p>
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt dolor itaque facere consequatur, dignissimos minus adipisci ipsam repudiandae nisi illum provident, natus quidem vero? Quaerat ducimus sequi praesentium commodi, consectetur corporis eos sit perspiciatis, quae sed officia error, iure quasi.</p>
+										<p><?= $detail['description'] ?></p>
 									</div>
 								</div>
 							</div>
@@ -124,7 +125,7 @@
 					<div class="pd-widget">
 						<h4>Location</h4>
 						<div class="map">
-							<iframe class="w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.9862545618907!2d106.94509731423047!3d-6.648624666843121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69b7bca97fa715%3A0x7763f029fab7bed5!2sForrester%20Glamping%20Co.!5e0!3m2!1sid!2sid!4v1625326827861!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+							<iframe class="w-100 h-100" src="<?= $detail['map_link'] ?>" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 						</div>
 						<div class="map-location">
 							<div class="row">

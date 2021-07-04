@@ -16,12 +16,12 @@ class Hero_model extends CI_Model
 	}
 	public function getSafestHotel()
 	{
-		$query = "SELECT hotel_pictures.name AS picture, hotel.id_hotel, hotel.name, hotel.stars, kota.nama_kota,
-		nearest_hospital_distance, hasil
+		$query = "SELECT hotel.id_hotel, hotel_pictures.name AS picture, hotel.name, hotel.stars, v_kota.nama_kota,
+		nearest_hospital_distance, resiko
 		FROM hotel
 		JOIN hotel_pictures ON hotel.main_picture=hotel_pictures.id_picture
-		JOIN kota ON kota.id_kota=hotel.city_id
-		ORDER BY kota.hasil ASC, nearest_rsia ASC, nearest_hospital_distance ASC
+		JOIN v_kota ON v_kota.id_kota=hotel.city_id
+		ORDER BY v_kota.resiko ASC, nearest_rsia ASC, nearest_hospital_distance ASC
 		LIMIT 6";
 		return $this->db->query($query)->result_array();
 	}
@@ -29,12 +29,12 @@ class Hero_model extends CI_Model
 	public function searchHotel($city)
 	{
 		$query = "SELECT hotel_pictures.name AS picture, hotel.id_hotel, hotel.name, hotel.stars,
-		nearest_hospital_distance, nearest_rsia, kota.nama_kota, kota.hasil
+		nearest_hospital_distance, nearest_rsia, v_kota.nama_kota, v_kota.resiko
 		FROM hotel
 		JOIN hotel_pictures ON hotel.main_picture=hotel_pictures.id_picture
-		JOIN kota ON kota.id_kota=hotel.city_id
+		JOIN v_kota ON v_kota.id_kota=hotel.city_id
 		WHERE hotel.city_id=$city
-		ORDER BY kota.hasil ASC, nearest_rsia ASC, nearest_hospital_distance ASC";
+		ORDER BY v_kota.resiko ASC, nearest_rsia ASC, nearest_hospital_distance ASC";
 		return $this->db->query($query)->result_array();
 	}
 	public function getDetail($id)
