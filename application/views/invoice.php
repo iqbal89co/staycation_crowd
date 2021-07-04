@@ -11,54 +11,55 @@
 			<div class="row">
 				<!-- Place photo -->
 				<div class="col-lg-4 col-md-6 col-sm-12">
-					<img src="<?= base_url('assets/img/hotel/JW-Marriot-hotel-room-Galaxy-Macau-Phase-2-e1432637852679.jpg') ?>"
+					<img src="<?= base_url("assets/img/hotel/$details->picture") ?>"
 						alt="hotel image" width="150" class="rounded">
 				</div>
 				<!-- Place name -->
 				<div class="col-lg-8 col-md-6 col-sm-12 align-self-center">
-					<h5 class="font-weight-bold">JW Marriot Hotel</h5>
-					<p>Jalan blablabla (ambil dari database)</p>
+					<h5 class="font-weight-bold"><?= $details->hotel_name ?></h5>
+					<p><?= $details->hotel_address ?></p>
 				</div>
 			</div>
 			<!-- User name -->
 			<div class="mt-4 pl-2" id="card-name">
 				<b>Booked by</b>
-				<p>Nama si pemesan</p>
+				<p><?= $details->booking_name ?></p>
 			</div>
 			<div class="row mt-4 pl-2" id="card-date">
 				<div class=" row col-6" id="date-card">
 					<!-- Check in date -->
 					<div class="col-12">
 						<b>Check in</b>
-						<p>Tanggal checkin (dari db)</p>
+						<p><?= date('d M Y H:i:s', strtotime($details->check_in)) ?></p>
 					</div>
 					<!-- Check out date -->
 					<div class="col-12">
 						<b>Check out</b>
-						<p>Tanggal check out (dari db)</p>
+						<p><?= date('d M Y H:i:s', strtotime($details->check_out)) ?></p>
 					</div>
 				</div>
 				<!-- Duration of stay -->
 				<div class="col-6 align-self-center pl-5">
-					<b>3 nights</b>
+					<b><?= $details->nights ?> nights</b>
 				</div>
 			</div>
 			<!-- Room type -->
 			<div class="mt-4 pl-2 pt-4 pb-4" id="card-room">
 				<b>Room</b>
-				<p>nama/jenis room (dari db) <span class="float-right font-weight-bold">IDR 120000/night</span></p>
+				<p><?= $details->room_name ?>
+				<span class="float-right font-weight-bold">IDR <?= $details->price ?>/night</span></p>
 			</div>
 		</div>
 		<div class="card-body col-lg-5 mx-auto mb-5 ml-2" id="cust-card-b2">
 			<div class="col-lg-12">
 				<!-- Total Payment -->
 				<div class="mt-4 pl-2 pb-4" id="card-name">
-					<b>Total Payment <span class="float-right">IDR 360000</span></b>
+					<b>Total Payment <span class="float-right">IDR <?= $details->nights * $details->price ?></span></b>
 				</div>
 				<!-- Payment Method -->
 				<div class="mt-4 pl-2 pb-4">
 					<b>Payment method</b> <br><br>
-					<form action="#">
+					<form action="<?= base_url('Hero/paymentSuccess') ?>" method="POST">
 						<div class="pb-3">
 							<!-- Credit Card -->
 							<div class="form-check form-check-inline mr-1">
@@ -98,7 +99,7 @@
 								<input type="text" class="form-control" name="name" placeholder="Card Holder Name">
 							</div>
 							<div class="form-group">
-								<input type="number" class="form-control" name="card_type" placeholder="Card Number">
+								<input type="text" class="form-control" name="card_type" placeholder="Card Number">
 							</div>
 							<div class="form-group form-row">
 								<div class="col-sm-6">
@@ -109,7 +110,7 @@
 								</div>
 								<div class="col-sm-6">
 									<div class="">
-										<input type="number" class="form-control" name="cv_code" placeholder="CVV/CVC">
+										<input type="text" class="form-control" name="cv_code" placeholder="CVV/CVC">
 										<small>3 last digit number that's printed at the back of your card</small>
 									</div>
 								</div>
@@ -129,7 +130,7 @@
 								<input type="text" class="form-control" name="name" placeholder="Card Holder Name">
 							</div>
 							<div class="form-group">
-								<input type="number" class="form-control" name="card_number" placeholder="Card Number">
+								<input type="text" class="form-control" name="card_number" placeholder="Card Number">
 							</div>
 							<div class="form-group form-row">
 								<div class="col-sm-6">
@@ -140,7 +141,7 @@
 								</div>
 								<div class="col-sm-6">
 									<div class="">
-										<input type="number" class="form-control" name="cv_code" placeholder="CVV/CVC">
+										<input type="text" class="form-control" name="cv_code" placeholder="CVV/CVC">
 										<small>3 last digit number that's printed at the back of your card</small>
 									</div>
 								</div>

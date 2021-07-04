@@ -72,7 +72,17 @@ class Hero extends CI_Controller
 	}
 	
 	public function booking($id){
-		$this->load->view('payment');
-		//$this->view->getDefault(null, 'payment');
+		$data['room'] = $this->hero->getRoomDetail($id);
+		$data['hotel'] = $this->hero->getDetail($data['room']->id_hotel);
+		$this->load->view('payment', $data);
+	}
+
+	public function invoice($id){
+		$data['details'] = $this->hero->bookingDetails($id);
+		$this->view->getDefault($data, 'invoice');
+	}
+
+	public function paymentSuccess(){
+		redirect(base_url('/'));
 	}
 }

@@ -37,7 +37,7 @@
 
 								<select id="inputState" name="city" class="form-control">
 									<?php foreach ($city as $c) :
-										if ($c->hasil == "TIDAK ADA KASUS") { ?>
+										if ($c->hasil == "TIDAK ADA KASUS" || $c->hasil == "TIDAK TERDAMPAK") { ?>
 											<option class="noCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
 										<?php } else if ($c->hasil == "RESIKO RENDAH") { ?>
 											<option class="rendahCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
@@ -49,6 +49,7 @@
 									endforeach; ?>
 								</select>
 							</div>
+						</div>
 						<div class="form-row">
 
 							<button type="submit" class="btn btn-primary text-right ml-auto">Search</button>

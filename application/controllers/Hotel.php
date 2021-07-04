@@ -236,47 +236,19 @@ class Hotel extends CI_Controller{
   }
 
   public function bookRoom($id){
-    $config = [
-      [
-        'field' => 'name',
-        'label' => 'Name',
-        'rules' => 'required',
-        'errors' => [
-          'required' => 'Please provide your name according to your id card'
-        ]
-      ],[
-        'field' => 'email',
-        'label' => 'Email',
-        'rules' => 'required|valid_email',
-        'errors' => [
-          'required' => 'Please provide your email',
-          'valid_email' => 'Invalid Emaail'
-        ]
-      ],[
-        'field' => 'phone_number',
-        'label' => 'Phone Number',
-        'rules' => 'required',
-        'errors' => [
-          'required' => 'Please provide your phone number'
-        ]
-      ]
-    ];
-    $this->form_validation->set_rules($config);
-    if($this->form_validation->run() === FALSE){
-      echo json_encode($this->form_validation->error_array());
-      return;
-    }
     $data = [
-      'id_room' => $this->input->post('id_room'),
+      'id_room' => $id,
       'name' => $this->input->post('name'),
       'email' => $this->input->post('email'),
       'phone_number' => $this->input->post('phone_number'),
       'check_in' => $this->input->post('check_in'),
       'check_out' => $this->input->post('check_out'),
-      'rooms' => $this->input->post('rooms'),
-      'guests' => $this->input->post('guests')
+      'pregnant_mothers' => $this->input->post('pregnant_mothers'),
+      'adults' => $this->input->post('adults'),
+      'children' => $this->input->post('children')
     ];
-    $this->hotelModel->bookRoom($data);
+    $bookingId = $this->hotelModel->bookRoom($data);
+    redirect(base_url("/Hero/invoice/$bookingId"));
   }
 }
 

@@ -20,26 +20,23 @@
 <div class="search-filter container all-view">
 	<div class="m-3 card">
 		<form class="m-3" method="POST" action="<?= base_url('hero/listHotel') ?>">
-			<div class="form-row">
-				<div class="form-group col-md-3">
-					<label for="inputState">Destination</label>
-					<select id="inputState" name="city" class="form-control">
-						<?php foreach ($city as $c) :
-							if ($c->hasil == "TIDAK ADA KASUS") { ?>
-								<option class="noCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
-							<?php } else if ($c->hasil == "RESIKO RENDAH") { ?>
-								<option class="rendahCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
-							<?php } else if ($c->hasil == "RESIKO SEDANG") { ?>
-								<option class="sedangCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
-							<?php } else { ?>
-								<option class="tinggiCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
-						<?php }
-						endforeach; ?>
-					</select>
-				</div>
+			<div class="form-group">
+				<label for="inputState">Destination</label>
+				<select id="inputState" name="city" class="form-control">
+					<?php foreach ($city as $c) :
+						if ($c->hasil == "TIDAK ADA KASUS" || $c->hasil == "TIDAK TERDAMPAK") { ?>
+							<option class="noCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+						<?php } else if ($c->hasil == "RESIKO RENDAH") { ?>
+							<option class="rendahCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+						<?php } else if ($c->hasil == "RESIKO SEDANG") { ?>
+							<option class="sedangCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+						<?php } else { ?>
+							<option class="tinggiCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+					<?php }
+					endforeach; ?>
+				</select>
 			</div>
 			<div class="form-row">
-
 				<button type="submit" class="btn btn-primary text-right ml-auto">Search</button>
 			</div>
 
@@ -50,14 +47,6 @@
 
 	<div class="all mb-5">
 		<div class="row">
-			<?php
-			$hamil = $_POST['jlhIbuHamil'] ?? 0;
-			$dewasa = $_POST['jlhDewasa'] ?? 0;
-			$anak = $_POST['jlhAnak'] ?? 0;
-			$checkIn = $_POST['checkIn'] ?? 0;
-			$checkOut = $_POST['checkOut'] ?? 0;
-			$queryString = "?hamil=$hamil&dewasa=$dewasa&anak=$anak&checkin=$checkIn&checkout=$checkOut";
-			?>
 			<?php foreach ($listHotel as $l) : ?>
 				<div class="col-sm-6 col-lg-3 pr-0">
 					<a href="<?= base_url('hero/detail/') . $l['id_hotel'] ?>" style="height: 200px;width: 170px;">

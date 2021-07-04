@@ -70,4 +70,24 @@ class Hero_model extends CI_Model
 		WHERE id_hotel=$id";
 		return $this->db->query($query)->result_array();
 	}
+	public function getRoomDetail($id){
+		return $this->db->select()->from('hotel_rooms')->where('id_room', $id)
+			->get()->row();
+	}
+
+	public function bookingDetails($id){
+		return $this->db->select("
+			hotel.name hotel_name,
+			hotel.address hotel_address,
+			pictures.name picture,
+			booking.name booking_name,
+			check_in, check_out, DATEDIFF(check_out, check_in) nights,
+			rooms.name room_name,
+			rooms.price
+		")->from('booking')
+			->join('hotel_rooms rooms', 'rooms.id_room = booking.id_room')
+			->join('hotel_pictures pictures', 'rooms.id_picture = pictures.id_picture')
+			->join('hotel', 'hotel.id_hotel = rooms.id_hotel')
+			->where('id_booking', $id)->limit(1)->get()->row();
+	}
 }
