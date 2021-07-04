@@ -14,6 +14,29 @@
 
 		<p class="footer-company-name text-light">Babymoon &copy; 2021</p>
 	</div>
+<<<<<<< HEAD
+=======
+
+	<div class="footer-center">
+
+		<div>
+			<i class="fas fa-map-marker"></i>
+			<p><span>21 Revolution Street</span> Rutland, VT</p>
+		</div>
+
+		<div>
+			<i class="fas fa-phone"></i>
+			<p>911</p>
+		</div>
+
+		<div>
+			<i class="fas fa-envelope"></i>
+			<p><a href="mailto:support@company.com">support@company.com</a></p>
+		</div>
+
+	</div>
+
+>>>>>>> 2b13aaf9045e050b0672dbc4cd0d3fbb8b9135d9
 </footer>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
