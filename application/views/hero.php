@@ -47,7 +47,7 @@
 							</div>
 						</div>
 						<div class="mb-3">
-							<button type="button" class="btn btn-secondary w-100 drop-heading">
+							<button type="button" class="btn btn-light w-100 drop-heading">
 								Guest
 							</button>
 
@@ -77,7 +77,7 @@
 											<button type="button" class="plusMin btnPlus">+</button>
 										</div>
 									</li>
-									<li><button type="button" class="btn w-100 drop-done">done</button></li>
+									<li><button type="button" class="btn btn-primary w-100 drop-done">done</button></li>
 								</ul>
 							</div>
 						</div>
