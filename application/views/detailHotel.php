@@ -116,7 +116,7 @@
 								<div class="col-lg-6">
 									<div class="ml-item">
 										<div class="ml-single-item">
-											<h6>Hospital <span>( <i class="fa fa-location-arrow"></i> 5 km )</span></h6>
+											<h6>Hospital <span>( <i class="fa fa-location-arrow"></i> <?= $detail['nearest_hospital_distance'] ?> km )</span></h6>
 											<p>RS.Adam malik</p>
 										</div>
 									</div>
@@ -124,7 +124,7 @@
 								<div class="col-lg-6">
 									<div class="ml-item">
 										<div class="ml-single-item">
-											<h6>mother and child hospital<span>( <i class="fa fa-location-arrow"></i> 5 km )</span></h6>
+											<h6>mother and child hospital<span>( <i class="fa fa-location-arrow"></i> <?= $detail['nearest_rsia'] ?> km )</span></h6>
 											<p>RS.Stella Maris</p>
 										</div>
 									</div>
@@ -135,21 +135,21 @@
 					<div class="pd-widget">
 						<h4><?= $reviews['count'] ?> reviews</h4>
 						<div class="pd-review">
-							<?php for($i = 0; $i < count($reviews['data']); $i++): ?>
-							<div class="pr-item">
-								<div class="pr-avatar">
-									<div class="pr-text">
-										<h6><?= $reviews['data'][$i]->rater ?></h6>
-										<span><?= date('d M Y', strtotime($reviews['data'][$i]->time)) ?></span>
-										<div class="pr-rating">
-										<?php for($j = 0; $j < 5 ; $j++): ?>
-											<i class="fa fa-star <?= $j < $reviews['data'][$i]->rating ? 'rated' : '' ?>"></i>
-										<?php endfor; ?>
+							<?php for ($i = 0; $i < count($reviews['data']); $i++) : ?>
+								<div class="pr-item">
+									<div class="pr-avatar">
+										<div class="pr-text">
+											<h6><?= $reviews['data'][$i]->rater ?></h6>
+											<span><?= date('d M Y', strtotime($reviews['data'][$i]->time)) ?></span>
+											<div class="pr-rating">
+												<?php for ($j = 0; $j < 5; $j++) : ?>
+													<i class="fa fa-star <?= $j < $reviews['data'][$i]->rating ? 'rated' : '' ?>"></i>
+												<?php endfor; ?>
+											</div>
 										</div>
 									</div>
+									<p><?= $reviews['data'][$i]->review ?></p>
 								</div>
-								<p><?= $reviews['data'][$i]->review ?></p>
-							</div>
 							<?php endfor; ?>
 						</div>
 					</div>
@@ -193,8 +193,8 @@
 </section>
 <script>
 	$(".review-form").on("change", `input[name="rating"]`, (e) => {
-		for(let i = 0; i < 5; i++){
-			if(i < e.currentTarget.value){
+		for (let i = 0; i < 5; i++) {
+			if (i < e.currentTarget.value) {
 				$(".review-form").find(`label[for="rating-star-${i + 1}"]`).addClass('rated');
 			} else {
 				$(".review-form").find(`label[for="rating-star-${i + 1}"]`).removeClass('rated');

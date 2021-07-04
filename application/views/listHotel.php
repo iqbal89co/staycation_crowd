@@ -24,16 +24,17 @@
 				<div class="form-group col-md-3">
 					<label for="inputState">Destination</label>
 					<select id="inputState" name="city" class="form-control">
-					<?php foreach ($city as $c) :
-						if ($c->hasil == "TIDAK ADA KASUS") { ?>
-							<option class="noCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
-						<?php } else if ($c->hasil == "RESIKO RENDAH") { ?>
-							<option class="rendahCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
-						<?php } else if ($c->hasil == "RESIKO SEDANG") { ?>
-							<option class="sedangCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
-						<?php } else { ?>
-							<option class="tinggiCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
-					<?php } endforeach; ?>
+						<?php foreach ($city as $c) :
+							if ($c->hasil == "TIDAK ADA KASUS") { ?>
+								<option class="noCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+							<?php } else if ($c->hasil == "RESIKO RENDAH") { ?>
+								<option class="rendahCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+							<?php } else if ($c->hasil == "RESIKO SEDANG") { ?>
+								<option class="sedangCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+							<?php } else { ?>
+								<option class="tinggiCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+						<?php }
+						endforeach; ?>
 					</select>
 				</div>
 				<div class="form-group col-md-3">
@@ -95,25 +96,47 @@
 	<div class="all mb-5">
 		<div class="row">
 			<?php foreach ($listHotel as $l) : ?>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a href="<?= base_url('hero/detail/') . $l['id_hotel'] ?>" class="wrapper">
-						<div class="card radius shadowDepth1">
-							<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $l['picture'] ?>');">
-							</div>
-							<div class="card__content card__padding">
-								<div class="name">
-									<h6><?= $l['name'] ?></h6>
+				<div class="col-4 pr-0">
+					<a href="<?= base_url('hero/detail/') . $l['id_hotel'] ?>" class="position-absolute" style="height: 200px;width: 170px;">
+						<div class="wrapper">
+							<div class="card radius shadowDepth1">
+								<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $l['picture'] ?>');">
+									<?php
+									switch ($l['hasil']) {
+										case "TIDAK ADA KASUS":
+											echo '<a href="#" class="m-2 badge badge-success">No Case</a>';
+											break;
+										case "RESIKO RENDAH":
+											echo '<a href="#" class="m-2 badge badge-info">Low Risk</a>';
+											break;
+										case "RESIKO SEDANG":
+											echo '<a href="#" class="m-2 badge badge-warning">Medium Risk</a>';
+											break;
+										default:
+											echo '<a href="#" class="m-2 badge badge-danger">High Risk</a>';
+											break;
+									}
+									?>
+
 								</div>
-								<div class="rate">
-									<?php for ($i = 0; $i < $l['stars']; $i++) { ?>
-										<i class="fa fa-star"></i>
-									<?php } ?>
-								</div>
-								<div class="location">
-									<span><i class="fas fa-map-marker-alt"></i></span>
-								</div>
-								<div class="info">
-									<i><?= $l['nearest_hospital_distance'] ?> km to hospital</i>
+								<div class="card__content card__padding">
+									<div class="name">
+										<h6><?= $l['name'] ?></h6>
+									</div>
+									<div class="rate">
+										<?php for ($i = 0; $i < $l['stars']; $i++) { ?>
+											<i class="fa fa-star"></i>
+										<?php } ?>
+									</div>
+									<div class="card__content card__padding">
+
+										<div class="location">
+											<span><i class="fas fa-map-marker-alt"></i> <?= $l['nama_kota'] ?></span>
+										</div>
+										<div class="info">
+											<i><?= $l['nearest_hospital_distance'] ?> km from hospital</i>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -128,8 +151,8 @@
 <script>
 	$("#inputState").select2({
 		theme: 'bootstrap',
-		templateResult: function(state){
-			if(!state.id){
+		templateResult: function(state) {
+			if (!state.id) {
 				return state.text
 			}
 			return $(
