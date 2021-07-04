@@ -803,3 +803,11 @@ a:hover {
 .tinggiCity {
 	background-color: red;
 }
+
+.sedangCity:hover,.noCity:hover,.rendahCity:hover,.tinggiCity:hover{
+	background-color: var(--info);
+}
+
+.select2-container--bootstrap .select2-results__option{
+	padding: 0 !important;
+}

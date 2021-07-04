@@ -107,7 +107,27 @@
 								<div class="wrapper">
 									<div class="card radius shadowDepth1">
 										<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $p['picture'] ?>');">
-										<a href="#" class="m-2 badge badge-danger">High Risk</a>
+										<a href="#" class="m-2 badge badge-danger">
+										<?php
+											switch ($p['resiko']) {
+												case 0:
+													echo 'No Case';
+													break;
+												case 1:
+													echo 'No Risk';
+													break;
+												case 2:
+													echo 'Low Risk';
+													break;
+												case 3:
+													echo 'Medium Risk';
+													break;
+												default:
+													echo 'High RIsk';
+													break;
+											}
+										?>
+										</a>
 										</div>
 										<div class="card__content card__padding">
 											<div class="name">
@@ -174,3 +194,16 @@
                 </div>
             </div>
         </div>
+<script>
+	$("#inputState").select2({
+		theme: 'bootstrap',
+		templateResult: function(state){
+			if(!state.id){
+				return state.text
+			}
+			return $(
+				`<span class="h-100 w-100 d-block p-1 ${state.element.className}">` + state.text + "</span>"
+			)
+		}
+	});
+</script>
