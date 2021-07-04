@@ -1,322 +1,52 @@
-body {
-	font-family: "Poppins", sans-serif;
-	overflow-x: hidden;
-}
-
-a {
-	text-decoration: none;
-	color: unset;
-}
-
-a:hover {
-	color: unset;
-}
-
-/* tracj bar */
-/* width */
-::-webkit-scrollbar {
-	width: 5px;
-	height: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-	background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-	background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-	background: #555;
-}
-
-/* left panel */
-.photo-banner {
-	height: 100vh;
-	background-image: url("../img/vacation.jpg");
-	width: 200vh;
-	background-size: contain;
-	filter: brightness(0.8);
-}
-
-.left-side {
-	height: 100vh;
-}
-
-.quotes {
-	color: white;
-	font-size: 41px;
-	margin: 20px;
-}
-
-.quotes b {
-	font-weight: 900;
-}
-
-/* right panel */
-.navbar ul {
-	flex-direction: row !important;
-}
-.search-panel {
-	height: fit-content;
-	border-radius: 5%;
-	box-shadow: 1px 0px 19px 12px #20202066;
-	border-bottom-right-radius: 0%;
-	border-top-right-radius: 0%;
-	min-height: 100vh;
-}
-
-/* card wisata */
-.list__wisata {
-	display: flex;
-	overflow: auto;
-}
-.wrapper {
-	max-width: 250px;
-}
-.border-tlr-radius {
-	border-top-left-radius: 2px;
-	border-top-right-radius: 2px;
-}
-
-.text-center {
-	text-align: center;
-}
-
-.radius {
-	border-radius: 2px;
-}
-
-.padding-tb {
-	padding-top: 1.6rem;
-	padding-bottom: 1.6rem;
-}
-
-.list__wisata .card:hover {
-	box-shadow: 0px 4px 20px #00000029;
-	cursor: pointer;
-}
-.list__wisata .card {
-	background-color: #fff;
-	margin-bottom: 1.6rem;
-	border-radius: 10%;
-	transition: 0.3s ease-in;
-}
-
-.card__padding {
-	padding: 0.6rem;
-}
-
-.card__image {
-	min-height: 100px;
-	background-color: #eee;
-	background-size: cover;
-	background-position: center;
-	border-radius: 10%;
-}
-
-.card__image img {
-	width: 100%;
-	max-width: 100%;
-	display: block;
-}
-
-.card__content {
-	position: relative;
-}
-.card__content .rate {
-	color: rgb(255, 208, 0);
-}
-.card__content .info {
-	font-size: small;
-	color: yellowgreen;
-}
-
-.card__meta time {
-	font-size: 1.5rem;
-	color: #bbb;
-	margin-left: 0.8rem;
-}
-
-.card__article a {
-	text-decoration: none;
-	color: #444;
-	transition: all 0.5s ease;
-}
-
-.card__article a:hover {
-	color: #2980b9;
-}
-
-/* benefit */
-.benefit .card {
-	height: fit-content;
-	width: 100%;
-	box-shadow: 0px 4px 20px #00000029;
-}
-.footer {
-	background-color: #de3f67;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-	box-sizing: border-box;
-	width: 100%;
-	text-align: left;
-	font: bold 16px sans-serif;
-
-	padding: 55px 50px;
-}
-
-.footer .footer-left,
-.footer .footer-center,
-.footer .footer-right {
-	display: inline-block;
-	vertical-align: top;
-}
-
-/* Footer left */
-
-.footer .footer-left {
-	width: 40%;
-}
-
-/* The company logo */
-
-.footer h3 {
-	color: #ffffff;
-	font: normal 36px "Cookie", cursive;
+*,
+::before,
+::after {
 	margin: 0;
-}
-
-.footer h3 span {
-	color: #5383d3;
-}
-
-/* Footer links */
-
-.footer .footer-links {
-	color: #ffffff;
-	margin: 20px 0 12px;
 	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
 }
 
-.footer .footer-links a {
-	display: inline-block;
-	line-height: 1.8;
+/* Login and registration page */
+.form-control:focus {
 	text-decoration: none;
-	color: inherit;
+	border-color: none !important;
+	box-shadow: none !important;
 }
 
-.footer .footer-company-name {
-	color: #8f9296;
-	font-size: 14px;
-	font-weight: normal;
-	margin: 0;
+.form-control {
+	height: 50px;
 }
 
-/* Footer Center */
-
-.footer .footer-center {
-	width: 35%;
+.cust-btn {
+	background-color: #006fff;
+	color: whitesmoke;
+	border: none;
+	transition: 0.4s;
 }
 
-.footer .footer-center i {
-	background-color: #7bf1a8;
-	color: #ffffff;
-	font-size: 25px;
-	width: 38px;
-	height: 38px;
-	border-radius: 50%;
-	text-align: center;
-	line-height: 42px;
-	margin: 10px 15px;
-	vertical-align: middle;
-}
-
-.footer .footer-center i.fa-envelope {
-	font-size: 17px;
-	line-height: 38px;
-}
-
-.footer .footer-center p {
-	display: inline-block;
-	color: #ffffff;
-	vertical-align: middle;
-	margin: 0;
-}
-
-.footer .footer-center p span {
-	display: block;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 2;
-}
-
-.footer .footer-center p a {
-	color: #5383d3;
+.cust-btn:hover {
+	background-color: #0058cc;
+	border: none;
 	text-decoration: none;
 }
 
-/* Footer Right */
-
-.footer .footer-right {
-	width: 20%;
+.reg-link {
+	text-decoration: none;
+	color: #006fff;
+	transition: 0.4s;
 }
 
-.footer .footer-company-about {
-	line-height: 20px;
-	color: #92999f;
-	font-size: 13px;
-	font-weight: normal;
-	margin: 0;
+.reg-link:hover {
+	text-decoration: none;
+	color: #0058cc;
 }
 
-.footer .footer-company-about span {
-	display: block;
-	color: #ffffff;
-	font-size: 14px;
-	font-weight: bold;
-	margin-bottom: 20px;
+/* babymoon text */
+.baby-txt {
+	color: #ff85a3;
 }
 
-.footer .footer-icons {
-	margin-top: 25px;
-}
-
-.footer .footer-icons a {
-	display: inline-block;
-	width: 35px;
-	height: 35px;
-	cursor: pointer;
-	background-color: #33383b;
-	border-radius: 2px;
-
-	font-size: 20px;
-	color: #ffffff;
-	text-align: center;
-	line-height: 35px;
-
-	margin-right: 3px;
-	margin-bottom: 5px;
-}
-
-@media (max-width: 880px) {
-	.footer {
-		font: bold 14px sans-serif;
-	}
-
-	.footer .footer-left,
-	.footer .footer-center,
-	.footer .footer-right {
-		display: block;
-		width: 100%;
-		margin-bottom: 40px;
-		text-align: center;
-	}
-
-	.footer .footer-center i {
-		margin-left: 0;
-	}
+.moon-txt {
+	color: #0058cc;
 }

@@ -32,7 +32,6 @@
 							<div class="form-group col-md-12">
 								<label for="inputState">Destination</label>
 								<select id="inputState" name="city" class="form-control">
-									<option selected disabled>city</option>
 									<?php foreach ($city as $c) : ?>
 										<option value="<?= $c['id_kota'] ?>"><?= $c['nama_kota'] ?></option>
 									<?php endforeach; ?>
@@ -40,11 +39,11 @@
 							</div>
 							<div class="form-group col-md-6">
 								<label for="checkIn">Check-In</label>
-								<input type="date" name="checkOut" class="form-control" id="checkIn" placeholder="">
+								<input type="date" name="checkIn" class="form-control" id="checkIn" placeholder="">
 							</div>
 							<div class="form-group col-md-6">
 								<label for="checkOut">Check-Out</label>
-								<input type="date" name="checkIn" class="form-control" id="checkOut" placeholder="">
+								<input type="date" name="checkOut" class="form-control" id="checkOut" placeholder="">
 							</div>
 						</div>
 						<div class="mb-3">
@@ -98,23 +97,22 @@
 						<div class="col-4 pr-0">
 							<div class="wrapper">
 								<div class="card radius shadowDepth1">
-									<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/fotoHotel/') . $p['pictures'] ?>');">
+									<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $p['picture'] ?>');">
 									</div>
 									<div class="card__content card__padding">
 										<div class="name">
 											<h6><?= $p['name'] ?></h6>
 										</div>
 										<div class="rate">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
+											<?php for ($i = 0; $i < $p['stars']; $i++) { ?>
+												<i class="fa fa-star"></i>
+											<?php } ?>
 										</div>
 										<div class="location">
 											<span><i class="fas fa-map-marker-alt"></i> <?= $p['nama_kota'] ?></span>
 										</div>
 										<div class="info">
-											<i><?= $p['nearest_hospital_distance'] ?></i>
+											<i><?= $p['nearest_hospital_distance'] ?> km from hospital</i>
 										</div>
 									</div>
 								</div>
