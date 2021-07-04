@@ -775,3 +775,19 @@ a:hover {
 .drop-text {
 	display: none;
 }
+
+.sedangCity {
+	background-color: orange;
+}
+
+.noCity {
+	background-color: greenyellow;
+}
+
+.rendahCity {
+	background-color: yellow;
+}
+
+.tinggiCity {
+	background-color: red;
+}

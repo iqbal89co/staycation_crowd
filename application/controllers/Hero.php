@@ -11,15 +11,21 @@ class Hero extends CI_Controller
 	public function index()
 	{
 		$data['title'] = "BabyMoon - Your StayCation Solution !";
-		$data['city'] = $this->hero->getCity();
+		$url = "https://data.covid19.go.id/public/api/skor.json";
+		$get_url = file_get_contents($url);
+		$d = json_decode($get_url);
+		$data['city'] = $d->data;
 		$data['popularHotel'] = $this->hero->getPopularHotel();
 		$this->view->getDefault($data, 'hero');
 	}
 	public function listHotel()
 	{
 		$data['title'] = "BabyMoon - Hotels";
-		$data['city'] = $this->hero->getCity();
-		$data['cityNow'] = $this->hero->getCityById($this->input->post('city'));
+		$url = "https://data.covid19.go.id/public/api/skor.json";
+		$get_url = file_get_contents($url);
+		$d = json_decode($get_url);
+		$data['city'] = $d->data;
+		$data['cityNow'] = $this->input->post('city');
 		$data['jlhIbuHamil'] = $this->input->post('jlhIbuHamil');
 		$data['jlhDewasa'] = $this->input->post('jlhDewasa');
 		$data['jlhAnak'] = $this->input->post('jlhAnak');
@@ -34,13 +40,15 @@ class Hero extends CI_Controller
 	}
 	public function detail($id)
 	{
-		// if ($this->hero->checkHotel($id)) {
-		$data['title'] = "BabyMoon - Hotels";
-		$data['detail'] = $this->hero->getDetail($id);
-		$data['gambar'] = $this->hero->getPicture($id);
-		$this->view->getDefault($data, 'detailHotel');
-		// } else {
-		// 	redirect('hero');
-		// }
+		if ($this->hero->checkHotel($id)) {
+			$data['title'] = "BabyMoon - Hotels";
+			$data['detail'] = $this->hero->getDetail($id);
+			$data['gambar'] = $this->hero->getPicture($id);
+			$data['rooms'] = $this->hero->getRooms($id);
+			var_dump($data['rooms']);
+			$this->view->getDefault($data, 'detailHotel');
+		} else {
+			redirect('hero');
+		}
 	}
 }

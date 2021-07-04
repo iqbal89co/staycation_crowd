@@ -32,9 +32,17 @@
 							<div class="form-group col-md-12">
 								<label for="inputState">Destination</label>
 								<select id="inputState" name="city" class="form-control">
-									<?php foreach ($city as $c) : ?>
-										<option value="<?= $c['id_kota'] ?>"><?= $c['nama_kota'] ?></option>
-									<?php endforeach; ?>
+									<?php foreach ($city as $c) :
+										if ($c->hasil == "TIDAK ADA KASUS") { ?>
+											<option class="noCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+										<?php } else if ($c->hasil == "RESIKO RENDAH") { ?>
+											<option class="rendahCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+										<?php } else if ($c->hasil == "RESIKO SEDANG") { ?>
+											<option class="sedangCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+										<?php } else { ?>
+											<option class="tinggiCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
+									<?php }
+									endforeach; ?>
 								</select>
 							</div>
 							<div class="form-group col-md-6">

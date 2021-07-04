@@ -24,7 +24,7 @@
 		<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 	</ol>
 	<div class="carousel-inner">
-		<?php for($i = 0; $i < count($gambar); $i++) : ?>
+		<?php for ($i = 0; $i < count($gambar); $i++) : ?>
 			<div class="carousel-item <?= $i == 0 ? "active" : "" ?>">
 				<div class="d-block w-100 carousel-image" style="background-image: url('<?= base_url('assets/img/hotel/') . $gambar[$i]['name'] ?>');" height="400" alt="slide"></div>
 			</div>
@@ -59,36 +59,46 @@
 						<div class="tab-board">
 							<ul class="nav nav-tabs" role="tablist">
 								<li class="nav-item">
-									<a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Overview</a>
+									<a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Rooms</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Description</a>
+									<a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Hotel Description</a>
 								</li>
 							</ul><!-- Tab panes -->
 							<div class="tab-content">
 								<div class="tab-pane active" id="tabs-1" role="tabpanel">
-									<div class="tab-details">
-										<ul class="left-table">
-											<li>
-												<span class="type-name">Price</span>
-												<span class="type-value">IDR <?= $detail['price'] ?>/night</span>
-											</li>
-											<li>
-												<span class="type-name">Type</span>
-												<span class="type-value">Glamping</span>
-											</li>
-										</ul>
-										<ul class="right-table">
-											<li>
-												<span class="type-name">Room Type</span>
-												<span class="type-value">Luxury</span>
-											</li>
-											<li>
-												<span class="type-name">Capacity</span>
-												<span class="type-value">2</span>
-											</li>
-										</ul>
-									</div>
+									<?php foreach ($rooms as $r) : ?>
+										<div class="tab-details">
+											<ul class="left-table">
+												<img class="img-fluid" src="<?= base_url('assets/img/hotel/') . $r['picture'] ?>" alt="">
+											</ul>
+											<ul class="right-table">
+												<li>
+													<span class="type-name">Price</span>
+													<span class="type-value">IDR <?= $r['price'] ?>/night</span>
+												</li>
+												<li>
+													<span class="type-name">Type</span>
+													<span class="type-value"><?= $r['type'] ?></span>
+												</li>
+												<li>
+													<span class="type-name">Room Type</span>
+													<span class="type-value"><?= $r['name'] ?></span>
+												</li>
+												<li>
+													<span class="type-name">Capacity</span>
+													<span class="type-value"><?= $r['capacity'] ?> person</span>
+												</li>
+												<li>
+													<span class="type-name">Beds</span>
+													<span class="type-value"><?= $r['beds'] ?> beds</span>
+												</li>
+												<li>
+													<button type="button" class="btn btn-warning float-right">Choose this room</button>
+												</li>
+											</ul>
+										</div>
+									<?php endforeach; ?>
 								</div>
 								<div class="tab-pane" id="tabs-2" role="tabpanel">
 									<div class="tab-desc">
