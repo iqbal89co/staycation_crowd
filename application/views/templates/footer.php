@@ -5,11 +5,6 @@
 
 		<p class="footer-links">
 			<a href="#">Home</a> ·
-			<a href="#">About</a> ·
-			<a href="#">Pricing</a> ·
-			<a href="#">About</a> ·
-			<a href="#">Faq</a> ·
-			<a href="#">Contact</a>
 		</p>
 
 		<p class="footer-company-name text-light">Babymoon &copy; 2021</p>
