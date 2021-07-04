@@ -36,12 +36,21 @@ class Hero_model extends CI_Model
 	}
 	public function getDetail($id)
 	{
-		$query = "SELECT hotel.*,
-		kota.nama_kota
+		$query = "SELECT *
 		FROM hotel
-		JOIN kota ON kota.nama_kota=hotel.city_id
 		WHERE hotel.id_hotel=$id";
 		return $this->db->query($query)->row_array();
+	}
+	public function getRooms($id)
+	{
+		$query = "SELECT hotel_rooms.id_room, hotel_rooms.id_hotel, hotel_rooms.name, 
+		hotel_type.type, hotel_rooms.beds, hotel_rooms.capacity, hotel_rooms.size, 
+		hotel_rooms.price, hotel_pictures.name AS picture 
+		FROM hotel_rooms
+		JOIN hotel_type ON hotel_rooms.type=hotel_type.id_type
+		JOIN hotel_pictures ON hotel_pictures.id_picture=hotel_rooms.id_picture
+		WHERE hotel_rooms.id_hotel=$id";
+		return $this->db->query($query)->result_array();
 	}
 	public function checkHotel($id)
 	{
