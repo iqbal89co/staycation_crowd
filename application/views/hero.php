@@ -28,6 +28,13 @@
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label for="inputState">Destination</label>
+								<span>
+									<span class="badge badge-success">No Case</span>
+								<span class="badge badge-info">Low Risk</span>
+								<span class="badge badge-warning text-white">Medium Risk</span>
+								<span class="badge badge-danger">High Risk</span>
+								</span>
+								
 								<select id="inputState" name="city" class="form-control">
 									<?php foreach ($city as $c) :
 										if ($c->hasil == "TIDAK ADA KASUS") { ?>
@@ -61,22 +68,15 @@
 								<input type="number" value="0" hidden readonly min="0" class="ctDewasa" name="jlhDewasa">
 								<input type="number" value="0" hidden readonly min="0" class="ctAnak" name="jlhAnak">
 								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Ibu Hamil
+									<li class="list-group-item">Adult
 										<div class="float-right" id="rowIbuHamil">
 											<button type="button" class="plusMin btnMin">-</button>
 											<span class="ctGuest">0</span>
 											<button type="button" class="plusMin btnPlus">+</button>
 										</div>
 									</li>
-									<li class="list-group-item">Orang dewasa
+									<li class="list-group-item">Child
 										<div class="float-right" id="rowDewasa">
-											<button type="button" class="plusMin btnMin">-</button>
-											<span class="ctGuest">0</span>
-											<button type="button" class="plusMin btnPlus">+</button>
-										</div>
-									</li>
-									<li class="list-group-item">Anak-anak
-										<div class="float-right" id="rowAnak">
 											<button type="button" class="plusMin btnMin">-</button>
 											<span class="ctGuest">0</span>
 											<button type="button" class="plusMin btnPlus">+</button>
@@ -202,7 +202,3 @@
 		}
 	});
 </script>
-<<<<<<< HEAD
-
-=======
->>>>>>> d53171de7aa7d5b8d6a3f38f45ac284a8df23b86

@@ -138,10 +138,11 @@
 								</div>
 								<div class="col-lg-6">
 									<div class="ml-item">
-										<div class="ml-single-item">
+										<!-- <div class="ml-single-item">
 											<h6>mother and child hospital<span>( <i class="fa fa-location-arrow"></i> <?= $detail['nearest_rsia'] ?> km )</span></h6>
 											<p>RS.Stella Maris</p>
-										</div>
+											<p>(0411) 854341</p>
+										</div> -->
 									</div>
 								</div>
 							</div>

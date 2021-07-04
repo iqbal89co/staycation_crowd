@@ -57,27 +57,20 @@
 						<input type="number" value="<?= $jlhDewasa ?>" hidden readonly min="0" class="ctDewasa" name="jlhDewasa">
 						<input type="number" value="<?= $jlhAnak ?>" hidden readonly min="0" class="ctAnak" name="jlhAnak">
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item">Ibu Hamil
-								<div class="float-right" id="rowIbuHamil">
-									<button type="button" class="plusMin btnMin">-</button>
-									<span class="ctGuest"><?= $jlhIbuHamil ?></span>
-									<button type="button" class="plusMin btnPlus">+</button>
-								</div>
-							</li>
-							<li class="list-group-item">Orang dewasa
-								<div class="float-right" id="rowDewasa">
-									<button type="button" class="plusMin btnMin">-</button>
-									<span class="ctGuest"><?= $jlhDewasa ?></span>
-									<button type="button" class="plusMin btnPlus">+</button>
-								</div>
-							</li>
-							<li class="list-group-item">Anak-anak
-								<div class="float-right" id="rowAnak">
-									<button type="button" class="plusMin btnMin">-</button>
-									<span class="ctGuest"><?= $jlhAnak ?></span>
-									<button type="button" class="plusMin btnPlus">+</button>
-								</div>
-							</li>
+								<li class="list-group-item">Adult
+									<div class="float-right" id="rowIbuHamil">
+										<button type="button" class="plusMin btnMin">-</button>
+										<span class="ctGuest">0</span>
+										<button type="button" class="plusMin btnPlus">+</button>
+									</div>
+								</li>
+								<li class="list-group-item">Child
+									<div class="float-right" id="rowDewasa">
+										<button type="button" class="plusMin btnMin">-</button>
+										<span class="ctGuest">0</span>
+										<button type="button" class="plusMin btnPlus">+</button>
+									</div>
+								</li>
 							<li><button type="button" class="btn w-100 drop-done">done</button></li>
 						</ul>
 					</div>
