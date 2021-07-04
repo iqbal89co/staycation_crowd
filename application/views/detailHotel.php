@@ -52,6 +52,8 @@
 								<div class="pt-price">IDR <?= $detail['price'] ?><span>/night</span></div>
 								<h3><?= $detail['name'] ?></h3>
 								<p><span class="icon_pin_alt"></span> <?= $detail['address'] ?></p>
+
+								<fieldset>
 							</div>
 						</div>
 					</div>
@@ -112,7 +114,7 @@
 					<div class="pd-widget">
 						<h4>Location</h4>
 						<div class="map">
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.9862545618907!2d106.94509731423047!3d-6.648624666843121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69b7bca97fa715%3A0x7763f029fab7bed5!2sForrester%20Glamping%20Co.!5e0!3m2!1sid!2sid!4v1625326827861!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+							<iframe class="w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.9862545618907!2d106.94509731423047!3d-6.648624666843121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69b7bca97fa715%3A0x7763f029fab7bed5!2sForrester%20Glamping%20Co.!5e0!3m2!1sid!2sid!4v1625326827861!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 						</div>
 						<div class="map-location">
 							<div class="row">
@@ -120,15 +122,15 @@
 									<div class="ml-item">
 										<div class="ml-single-item">
 											<h6>Hospital <span>( <i class="fa fa-location-arrow"></i> 5 km )</span></h6>
-											<p>Portland Ave Rochester, NY 14621</p>
+											<p>RS.Adam malik</p>
 										</div>
 									</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="ml-item">
 										<div class="ml-single-item">
-											<h6>Apotic <span>( <i class="fa fa-location-arrow"></i> 5 km )</span></h6>
-											<p>Boomerang Barber & Beauty</p>
+											<h6>mother and child hospital<span>( <i class="fa fa-location-arrow"></i> 5 km )</span></h6>
+											<p>RS.Stella Maris</p>
 										</div>
 									</div>
 								</div>
@@ -179,10 +181,9 @@
 						</div>
 					</div>
 					<div class="pd-widget">
-						<h4>YOur Rating</h4>
+						<h4>Your Rating</h4>
 						<form action="#" class="review-form">
 							<div class="group-input">
-
 							</div>
 							<textarea placeholder="Messages"></textarea>
 							<div class="rating">
