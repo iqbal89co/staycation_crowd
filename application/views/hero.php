@@ -30,11 +30,11 @@
 								<label for="inputState">Destination</label>
 								<span>
 									<span class="badge badge-success">No Case</span>
-								<span class="badge badge-info">Low Risk</span>
-								<span class="badge badge-warning text-white">Medium Risk</span>
-								<span class="badge badge-danger">High Risk</span>
+									<span class="badge badge-info">Low Risk</span>
+									<span class="badge badge-warning text-white">Medium Risk</span>
+									<span class="badge badge-danger">High Risk</span>
 								</span>
-								
+
 								<select id="inputState" name="city" class="form-control">
 									<?php foreach ($city as $c) :
 										if ($c->hasil == "TIDAK ADA KASUS" || $c->hasil == "TIDAK TERDAMPAK") { ?>
@@ -63,97 +63,99 @@
 				<h2>Safest Vacation</h2>
 				<div class="">
 					<div class="row list__wisata">
-					<?php foreach ($popularHotel as $p) : ?>
-						<div class="col-4 pr-0">
-							<a href="<?= base_url('hero/detail/') . $p['id_hotel'] ?>" style="height: 200px;width: 170px;">
-								<div class="wrapper">
-									<div class="card radius shadowDepth1">
-										<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $p['picture'] ?>');">
+						<?php foreach ($popularHotel as $p) : ?>
+							<div class="col-4 pr-0">
+								<a href="<?= base_url('hero/detail/') . $p['id_hotel'] ?>" style="height: 200px;width: 170px;">
+									<div class="wrapper">
+										<div class="card radius shadowDepth1">
+											<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $p['picture'] ?>');">
+
 												<?php
-													switch ($p['resiko']) {
-												case "TIDAK ADA KASUS":
-													echo '<span class="m-2 badge badge-success">No Case</span>';
-													break;
-												case "RESIKO RENDAH":
-													echo '<span class="m-2 badge badge-info">Low Risk</span>';
-													break;
-												case "RESIKO SEDANG":
-													echo '<span class="m-2 badge badge-warning">Medium Risk</span>';
-													break;
-												default:
-													echo '<span class="m-2 badge badge-danger">High Risk</span>';
-													break;
-											}
+												switch ($p['resiko']) {
+													case 1:
+														echo '<span class="m-2 badge badge-success">No Case</span>';
+														break;
+													case 2:
+														echo '<span class="m-2 badge badge-info">Low risk</span>';
+														break;
+													case 3:
+														echo '<span class="m-2 badge badge-warning">Medium risk</span>';
+														break;
+													default:
+														echo '<span class="m-2 badge badge-danger">High risk</span>';
+														break;
+												}
 												?>
-										</div>
-										<div class="card__content card__padding">
+
+											</div>
 											<div class="card__content card__padding">
-												<div class="name">
-													<h6><?= $p['name'] ?></h6>
-												</div>
-												<div class="rate">
-													<?php for ($i = 0; $i < $p['stars']; $i++) { ?>
-														<i class="fa fa-star"></i>
-													<?php } ?>
-												</div>
-												<div class="location">
-													<span><i class="fas fa-map-marker-alt"></i> <?= $p['nama_kota'] ?></span>
-												</div>
-												<div class="info">
-													<i><?= $p['nearest_hospital_distance'] ?> km from hospital</i>
+												<div class="card__content card__padding">
+													<div class="name">
+														<h6><?= $p['name'] ?></h6>
+													</div>
+													<div class="rate">
+														<?php for ($i = 0; $i < $p['stars']; $i++) { ?>
+															<i class="fa fa-star"></i>
+														<?php } ?>
+													</div>
+													<div class="location">
+														<span><i class="fas fa-map-marker-alt"></i> <?= $p['nama_kota'] ?></span>
+													</div>
+													<div class="info">
+														<i><?= $p['nearest_hospital_distance'] ?> km from hospital</i>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							</a>		
-						</div>
-					<?php endforeach; ?>
-				</div>
-
+								</a>
+							</div>
+						<?php endforeach; ?>
 					</div>
 
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container benefit py-5">
+	<h1 class="">Safe and Unique Vacation</h1>
+	<div class="row my-5">
+		<div class="col-lg-3 col-sm-6">
+			<div class="card text-center py-5 justify-content-center">
+				<div class="card-body p-2">
+					<img class="float-center mb-4" src="assets/img/corona-safe.png" alt="" width="100">
+					<h6>guarantee health protocol</h6>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-sm-6">
+			<div class="card text-center py-5 justify-content-center">
+				<div class="card-body p-2">
+					<img class="float-center mb-4" src="assets/img/safe.png" alt="" width="100">
+					<h6>Provide the safest location for you</h6>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-sm-6">
+			<div class="card text-center py-5 justify-content-center">
+				<div class="card-body p-2">
+					<img class="float-center mb-4" src="assets/img/health.png" alt="" width="100">
+					<h6>Provide information on the nearest health service during an emergency</h6>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-sm-6">
+			<div class="card text-center py-5 justify-content-center">
+				<div class="card-body p-2">
+					<img class="float-center mb-4" src="assets/img/vacation.png" alt="" width="100">
+					<h6>staycation with a variety of unique experiences</h6>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="container benefit py-5">
-		<h1 class="">Safe and Unique Vacation</h1>
-		<div class="row my-5">
-				<div class="col-lg-3 col-sm-6">
-						<div class="card text-center py-5 justify-content-center">
-								<div class="card-body p-2">
-										<img class="float-center mb-4" src="assets/img/corona-safe.png" alt="" width="100">
-										<h6>guarantee health protocol</h6>
-									</div>
-						</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-						<div class="card text-center py-5 justify-content-center">
-								<div class="card-body p-2">
-										<img class="float-center mb-4" src="assets/img/safe.png" alt="" width="100">
-										<h6>Provide the safest location for you</h6>
-									</div>
-						</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-						<div class="card text-center py-5 justify-content-center">
-								<div class="card-body p-2">
-										<img class="float-center mb-4" src="assets/img/health.png" alt="" width="100">
-										<h6>Provide information on the nearest health service during an emergency</h6>
-									</div>
-						</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-						<div class="card text-center py-5 justify-content-center">
-								<div class="card-body p-2">
-										<img class="float-center mb-4" src="assets/img/vacation.png" alt="" width="100">
-										<h6>staycation with a variety of unique experiences</h6>
-									</div>
-						</div>
-				</div>
-		</div>
 </div>
 <script>
 	$("#inputState").select2({

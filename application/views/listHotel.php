@@ -53,27 +53,26 @@
 						<div class="wrapper">
 							<div class="card radius shadowDepth1">
 								<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $l['picture'] ?>');">
-								<?php
+
+									<?php
 									switch ($l['resiko']) {
-										case "TIDAK ADA KASUS":
+										case 1:
 											echo '<span class="m-2 badge badge-success">No Case</span>';
 											break;
-										case "RESIKO RENDAH":
-											echo '<span class="m-2 badge badge-info">Low Risk</span>';
+										case 2:
+											echo '<span class="m-2 badge badge-info">Low risk</span>';
 											break;
-										case "RESIKO SEDANG":
-											echo '<span class="m-2 badge badge-warning">Medium Risk</span>';
+										case 3:
+											echo '<span class="m-2 badge badge-warning">Medium risk</span>';
 											break;
 										default:
-											echo '<span class="m-2 badge badge-danger">High Risk</span>';
+											echo '<span class="m-2 badge badge-danger">High risk</span>';
 											break;
 									}
-								?>
+									?>
+
 								</div>
 								<div class="card__content card__padding">
-									<div class="location">
-										<span><i class="fas fa-map-marker-alt"></i></span>
-									</div>
 									<div class="card__content card__padding">
 										<div class="name">
 											<h6><?= $l['name'] ?></h6>
@@ -83,13 +82,11 @@
 												<i class="fa fa-star"></i>
 											<?php } ?>
 										</div>
-										<div class="card__content card__padding">
-											<div class="location">
-												<span><i class="fas fa-map-marker-alt"></i> <?= $l['nama_kota'] ?></span>
-											</div>
-											<div class="info">
-												<i><?= $l['nearest_hospital_distance'] ?> km from hospital</i>
-											</div>
+										<div class="location">
+											<span><i class="fas fa-map-marker-alt"></i> <?= $l['nama_kota'] ?></span>
+										</div>
+										<div class="info">
+											<i><?= $l['nearest_hospital_distance'] ?> km from hospital</i>
 										</div>
 									</div>
 								</div>
