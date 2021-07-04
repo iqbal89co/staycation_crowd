@@ -16,7 +16,7 @@ class Hero_model extends CI_Model
 	}
 	public function getPopularHotel()
 	{
-		$query = "SELECT hotel_pictures.name AS picture, hotel.name, hotel.stars, kota.nama_kota,
+		$query = "SELECT hotel_pictures.name AS picture,hotel.id_hotel, hotel.name, hotel.stars, kota.nama_kota,
 		nearest_hospital_distance
 		FROM hotel
 		JOIN hotel_pictures ON hotel.main_picture=hotel_pictures.id_picture
