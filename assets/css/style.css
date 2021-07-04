@@ -48,3 +48,60 @@
 .moon-txt {
 	color: #0058cc;
 }
+
+/* Invoice page */
+
+#cust-card-b1,
+#cust-card-b2 {
+	border: none;
+	box-shadow: 0 5px 10px #b1b1b1;
+}
+
+#card-h {
+	border-bottom: none;
+	background: #f3f3f3;
+}
+
+#card-name {
+	border-bottom: 2px solid #e7e6e6;
+}
+
+#date-card {
+	border-right: 1px solid #b1b1b1;
+}
+
+#card-room {
+	border-top: 2px solid #e7e6e6;
+}
+
+div .paymentMethod {
+	background: #f3f3f3;
+}
+
+.pay-btn {
+	background: #006fff;
+	color: #fff;
+	transition: 0.4s;
+}
+
+.pay-btn:hover {
+	background: #0058cc;
+	color: #fff;
+}
+
+#cancel-btn {
+	background: #fff;
+	color: #ff85a3;
+	transition: 0.4s;
+	cursor: pointer;
+}
+
+#cancel-btn:hover {
+	background: #f3f3f3;
+	color: #ff85a3;
+	cursor: pointer;
+}
+
+.virtualAcc {
+	border: none;
+}
