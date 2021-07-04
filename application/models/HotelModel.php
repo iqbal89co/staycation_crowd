@@ -52,6 +52,7 @@ class HotelModel extends CI_Model{
 
   public function bookRoom($data){
     $this->db->insert('booking', $data);
+    return $this->db->insert_id();
   }
 }
 

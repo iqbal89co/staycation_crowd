@@ -37,7 +37,7 @@
 								
 								<select id="inputState" name="city" class="form-control">
 									<?php foreach ($city as $c) :
-										if ($c->hasil == "TIDAK ADA KASUS") { ?>
+										if ($c->hasil == "TIDAK ADA KASUS" || $c->hasil == "TIDAK TERDAMPAK") { ?>
 											<option class="noCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
 										<?php } else if ($c->hasil == "RESIKO RENDAH") { ?>
 											<option class="rendahCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
@@ -48,42 +48,6 @@
 									<?php }
 									endforeach; ?>
 								</select>
-							</div>
-							<div class="form-group col-md-6">
-								<label for="checkIn">Check-In</label>
-								<input type="date" name="checkIn" class="form-control" id="checkIn" placeholder="">
-							</div>
-							<div class="form-group col-md-6">
-								<label for="checkOut">Check-Out</label>
-								<input type="date" name="checkOut" class="form-control" id="checkOut" placeholder="">
-							</div>
-						</div>
-						<div class="mb-3">
-							<button type="button" class="btn btn-light w-100 drop-heading">
-								Guest
-							</button>
-
-							<div class="drop-text w-100">
-								<input type="number" value="0" hidden readonly min="0" class="ctIbuHamil" name="jlhIbuHamil">
-								<input type="number" value="0" hidden readonly min="0" class="ctDewasa" name="jlhDewasa">
-								<input type="number" value="0" hidden readonly min="0" class="ctAnak" name="jlhAnak">
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Adult
-										<div class="float-right" id="rowIbuHamil">
-											<button type="button" class="plusMin btnMin">-</button>
-											<span class="ctGuest">0</span>
-											<button type="button" class="plusMin btnPlus">+</button>
-										</div>
-									</li>
-									<li class="list-group-item">Child
-										<div class="float-right" id="rowDewasa">
-											<button type="button" class="plusMin btnMin">-</button>
-											<span class="ctGuest">0</span>
-											<button type="button" class="plusMin btnPlus">+</button>
-										</div>
-									</li>
-									<li><button type="button" class="btn btn-primary w-100 drop-done">done</button></li>
-								</ul>
 							</div>
 						</div>
 						<div class="form-row">

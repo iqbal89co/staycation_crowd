@@ -52,21 +52,6 @@
 							</div>
 						</div>
 					</div>
-					<form action="">
-						<div class="form-row mb-3">
-							<div class="col-4">
-								<label for="checkin">Check In</label>
-								<input type="date" class="form-control" placeholder="">
-							</div>
-							<div class="col-4">
-								<label for="checkin">Check In</label>
-								<input type="date" class="form-control" placeholder="">
-							</div>
-							<div class="col-4 text-center">
-								<button class="btn btn-primary mt-4 align-center">Check Room</button>
-							</div>
-						</div>
-					</form>
 					<div class="pd-board">
 						<div class="tab-board">
 							<ul class="nav nav-tabs" role="tablist">
@@ -75,6 +60,9 @@
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Hotel Description</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Hotel Rules</a>
 								</li>
 							</ul><!-- Tab panes -->
 							<div class="tab-content">
@@ -106,7 +94,7 @@
 													<span class="type-value"><?= $r['beds'] ?> beds</span>
 												</li>
 												<li>
-													<a class="btn btn-warning float-right" href="<?= base_url("/hero/booking/$r[id_room]") ?>?<?= $_SERVER['QUERY_STRING'] ?>">
+													<a class="btn btn-warning float-right" href="<?= base_url("/hero/booking/$r[id_room]") ?>">
 														Choose this room
 													</a>
 												</li>
@@ -117,6 +105,11 @@
 								<div class="tab-pane" id="tabs-2" role="tabpanel">
 									<div class="tab-desc">
 										<p><?= $detail['description'] ?></p>
+									</div>
+								</div>
+								<div class="tab-pane" id="tabs-3" role="tabpanel">
+									<div class="tab-desc">
+										<p><?= $detail['rules'] ?></p>
 									</div>
 								</div>
 							</div>
