@@ -13,7 +13,7 @@
 		</div>
 	</div>
 	<div class="col-sm-12 col-lg-6">
-		<div class="search-panel position-absolute bg-white w-100">
+		<div class="search-panel position-relative bg-white w-100">
 			<nav class="navbar navbar-expand-lg navbar-light text-dark px-4">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
@@ -103,29 +103,32 @@
 				<div class=" list__wisata">
 					<?php foreach ($popularHotel as $p) : ?>
 						<div class="col-4 pr-0">
-							<div class="wrapper">
-								<div class="card radius shadowDepth1">
-									<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $p['picture'] ?>');">
-									<a href="#" class="m-2 badge badge-danger">High Risk</a>
-									</div>
-									<div class="card__content card__padding">
-										<div class="name">
-											<h6><?= $p['name'] ?></h6>
+							<a href="#">
+								<div class="wrapper">
+									<div class="card radius shadowDepth1">
+										<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $p['picture'] ?>');">
+										<a href="#" class="m-2 badge badge-danger">High Risk</a>
 										</div>
-										<div class="rate">
-											<?php for ($i = 0; $i < $p['stars']; $i++) { ?>
-												<i class="fa fa-star"></i>
-											<?php } ?>
-										</div>
-										<div class="location">
-											<span><i class="fas fa-map-marker-alt"></i> <?= $p['nama_kota'] ?></span>
-										</div>
-										<div class="info">
-											<i><?= $p['nearest_hospital_distance'] ?> km from hospital</i>
+										<div class="card__content card__padding">
+											<div class="name">
+												<h6><?= $p['name'] ?></h6>
+											</div>
+											<div class="rate">
+												<?php for ($i = 0; $i < $p['stars']; $i++) { ?>
+													<i class="fa fa-star"></i>
+												<?php } ?>
+											</div>
+											<div class="location">
+												<span><i class="fas fa-map-marker-alt"></i> <?= $p['nama_kota'] ?></span>
+											</div>
+											<div class="info">
+												<i><?= $p['nearest_hospital_distance'] ?> km from hospital</i>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+							</a>
+							
 						</div>
 					<?php endforeach; ?>
 
