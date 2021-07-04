@@ -21,7 +21,7 @@ class Hero_model extends CI_Model
 		FROM hotel
 		JOIN hotel_pictures ON hotel.main_picture=hotel_pictures.id_picture
 		JOIN kota ON kota.id_kota=hotel.city_id
-		ORDER BY kota.hasil ASC, nearest_rsia ASC, nearest_hospital_distance ASC
+		ORDER BY kota.hasil DESC, nearest_rsia ASC, nearest_hospital_distance ASC
 		LIMIT 6";
 		return $this->db->query($query)->result_array();
 	}
