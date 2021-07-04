@@ -9,6 +9,7 @@ class Hero extends CI_Controller
 		$this->load->model('Hero_model', 'hero');
 		$this->load->model('ReviewModel', 'review');
 	}
+
 	public function index()
 	{
 		$data['title'] = "BabyMoon - Your StayCation Solution !";
@@ -19,6 +20,7 @@ class Hero extends CI_Controller
 		$data['popularHotel'] = $this->hero->getSafestHotel();
 		$this->view->getDefault($data, 'hero');
 	}
+
 	public function listHotel()
 	{
 		$data['title'] = "BabyMoon - Hotels";
@@ -39,6 +41,7 @@ class Hero extends CI_Controller
 		$days = ($date2 - $date1) / 86400;
 		$this->view->getDefault($data, 'listHotel');
 	}
+
 	public function detail($id)
 	{
 		if ($this->hero->checkHotel($id)) {
@@ -66,5 +69,10 @@ class Hero extends CI_Controller
 			}
 		}
 		// echo json_encode($data[0]->kota);
+	}
+	
+	public function booking($id){
+		$this->load->view('payment');
+		//$this->view->getDefault(null, 'payment');
 	}
 }

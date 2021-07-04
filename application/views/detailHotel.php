@@ -106,7 +106,9 @@
 													<span class="type-value"><?= $r['beds'] ?> beds</span>
 												</li>
 												<li>
-													<button type="button" class="btn btn-warning float-right">Choose this room</button>
+													<a class="btn btn-warning float-right" href="<?= base_url("/hero/booking/$r[id_room]") ?>?<?= $_SERVER['QUERY_STRING'] ?>">
+														Choose this room
+													</a>
 												</li>
 											</ul>
 										</div>
@@ -114,8 +116,7 @@
 								</div>
 								<div class="tab-pane" id="tabs-2" role="tabpanel">
 									<div class="tab-desc">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt dolor itaque facere consequatur, dignissimos minus adipisci ipsam repudiandae nisi illum provident, natus quidem vero? Quaerat ducimus sequi praesentium commodi, consectetur corporis eos sit perspiciatis, quae sed officia error, iure quasi.</p>
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt dolor itaque facere consequatur, dignissimos minus adipisci ipsam repudiandae nisi illum provident, natus quidem vero? Quaerat ducimus sequi praesentium commodi, consectetur corporis eos sit perspiciatis, quae sed officia error, iure quasi.</p>
+										<p><?= $detail['description'] ?></p>
 									</div>
 								</div>
 							</div>

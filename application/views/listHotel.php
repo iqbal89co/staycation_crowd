@@ -25,11 +25,11 @@
 					<label for="inputState">Destination</label>
 					<select id="inputState" name="city" class="form-control">
 						<?php foreach ($city as $c) :
-							if ($c->hasil == "TIDAK ADA KASUS") { ?>
+							if ($c->resiko == "TIDAK ADA KASUS") { ?>
 								<option class="noCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
-							<?php } else if ($c->hasil == "RESIKO RENDAH") { ?>
+							<?php } else if ($c->resiko == "RESIKO RENDAH") { ?>
 								<option class="rendahCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
-							<?php } else if ($c->hasil == "RESIKO SEDANG") { ?>
+							<?php } else if ($c->resiko == "RESIKO SEDANG") { ?>
 								<option class="sedangCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
 							<?php } else { ?>
 								<option class="tinggiCity" value="<?= $c->kode_kota ?>"><?= $c->prov ?>, <?= $c->kota ?></option>
@@ -95,29 +95,36 @@
 
 	<div class="all mb-5">
 		<div class="row">
+			<?php
+				$hamil = $_POST['jlhIbuHamil'] ?? 0;
+				$dewasa = $_POST['jlhDewasa'] ?? 0;
+				$anak = $_POST['jlhAnak'] ?? 0;
+				$checkIn = $_POST['checkIn'] ?? 0;
+				$checkOut = $_POST['checkOut'] ?? 0;
+				$queryString = "?hamil=$hamil&dewasa=$dewasa&anak=$anak&checkin=$checkIn&checkout=$checkOut";
+			?>
 			<?php foreach ($listHotel as $l) : ?>
 				<div class="col-sm-6 col-lg-3 pr-0">
 					<a href="<?= base_url('hero/detail/') . $l['id_hotel'] ?>" class="position-absolute" style="height: 200px;width: 170px;">
 						<div class="wrapper">
 							<div class="card radius shadowDepth1">
 								<div class="card__image border-tlr-radius" style="background-image: url('<?= base_url('assets/img/hotel/') . $l['picture'] ?>');">
-									<?php
-									switch ($l['hasil']) {
+								<?php
+									switch ($l['resiko']) {
 										case "TIDAK ADA KASUS":
-											echo '<a href="#" class="m-2 badge badge-success">No Case</a>';
+											echo '<span class="m-2 badge badge-success">No Case</span>';
 											break;
 										case "RESIKO RENDAH":
-											echo '<a href="#" class="m-2 badge badge-info">Low Risk</a>';
+											echo '<span class="m-2 badge badge-info">Low Risk</span>';
 											break;
 										case "RESIKO SEDANG":
-											echo '<a href="#" class="m-2 badge badge-warning">Medium Risk</a>';
+											echo '<span class="m-2 badge badge-warning">Medium Risk</span>';
 											break;
 										default:
-											echo '<a href="#" class="m-2 badge badge-danger">High Risk</a>';
+											echo '<span class="m-2 badge badge-danger">High Risk</span>';
 											break;
 									}
-									?>
-
+								?>
 								</div>
 								<div class="card__content card__padding">
 									<div class="name">
@@ -128,13 +135,25 @@
 											<i class="fa fa-star"></i>
 										<?php } ?>
 									</div>
+									<div class="location">
+										<span><i class="fas fa-map-marker-alt"></i></span>
+									</div>
 									<div class="card__content card__padding">
-
-										<div class="location">
-											<span><i class="fas fa-map-marker-alt"></i> <?= $l['nama_kota'] ?></span>
+										<div class="name">
+											<h6><?= $l['name'] ?></h6>
 										</div>
-										<div class="info">
-											<i><?= $l['nearest_hospital_distance'] ?> km from hospital</i>
+										<div class="rate">
+											<?php for ($i = 0; $i < $l['stars']; $i++) { ?>
+												<i class="fa fa-star"></i>
+											<?php } ?>
+										</div>
+										<div class="card__content card__padding">
+											<div class="location">
+												<span><i class="fas fa-map-marker-alt"></i> <?= $l['nama_kota'] ?></span>
+											</div>
+											<div class="info">
+												<i><?= $l['nearest_hospital_distance'] ?> km from hospital</i>
+											</div>
 										</div>
 									</div>
 								</div>
