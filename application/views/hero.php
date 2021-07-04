@@ -131,7 +131,7 @@
 													<i class="fa fa-star"></i>
 												<?php } ?>
 											</div>
-											<div class="card__content card__padding">
+											<div class="card__content">
 
 												<div class="location">
 													<span><i class="fas fa-map-marker-alt"></i> <?= $p['nama_kota'] ?></span>
@@ -152,7 +152,6 @@
 		</div>
 	</div>
 </div>
-
 <div class="container benefit py-5">
 	<h1 class="">Safe and Unique Vacation</h1>
 	<div class="row my-5">
@@ -203,3 +202,7 @@
 		}
 	});
 </script>
+<<<<<<< HEAD
+
+=======
+>>>>>>> d53171de7aa7d5b8d6a3f38f45ac284a8df23b86
